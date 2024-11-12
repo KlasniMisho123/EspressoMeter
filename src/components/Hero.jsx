@@ -5,10 +5,11 @@ export default function Hero() {
     <>
         <h1> Coffee Tracking for Cofee <abbr title="An Enthusiast or devotee">Fiends</abbr></h1>
         <div className='benefits-list'>
-            <h3 className='font-bolder '>Try <span className='text-gradient'>Espresso𝔪eter</span> and start ...</h3>
+            <h3 className='font-bolder '> <i className="fa-solid fa-mug-hot"></i> Try <span className='text-gradient'>Espresso𝔪eter</span> and start ...</h3>
             <p>✅ Tracking every cofeee </p>
             <p>✅ Measuring your blood caffeine levels </p>
             <p>✅ Costing and quantifying your addiction </p>
+       
         </div>
     </>
   )
