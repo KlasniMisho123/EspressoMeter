@@ -237,8 +237,6 @@ h2 {
   white-space: nowrap;
 }
 
-
-
 footer {
   padding: 2rem 0;
   display: flex;
@@ -257,7 +255,9 @@ footer {
   gap: 1rem;
 }
 
-
+.m-meter {
+  font-size: 48px;
+}
 
 
 @media (min-width: 640px) {
@@ -277,6 +277,5 @@ footer {
     font-size: 3rem;
     line-height: 1;
   }
-
 
 }
