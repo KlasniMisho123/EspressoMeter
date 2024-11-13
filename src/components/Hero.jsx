@@ -14,13 +14,14 @@ export default function Hero() {
           <div>
             <i className="fa-solid fa-circle-info"></i>
             <h3> Did You Know... </h3>
-            <h5>That caffeine's galf-life is about 5 hours?</h5>
-            <p>This means that after 5 hours, half caffeine you \
+          </div>
+          <h5>That caffeine's galf-life is about 5 hours?</h5>
+          <p>This means that after 5 hours, half caffeine you \
               consumed is still in your system, keeping you alert longer! so 
               if you drink a cup of coffee with 200 mg if caffeine,
               5 hours, later, you'll still have about
                100 mg of caffeine in your system </p>
-          </div>
+         
        </div>
     </>
   )
