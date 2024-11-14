@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Layout from './components/Layout';
 import Hero from './components/Hero';
-import CofeeForm from './components/CofeeForm';
+import CoffeeForm from './components/CoffeeForm';
 import Stats from './components/Stats';
 import History from './components/History';
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <Layout >
       <Hero /> 
-      <CofeeForm />
+      <CoffeeForm />
       {isAutenticated && (authenticaedContent)}
     </Layout>
   )

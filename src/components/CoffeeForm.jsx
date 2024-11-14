@@ -1,7 +1,7 @@
 import React from 'react'
 import { coffeeOptions } from '../utils'
 
-export default function CofeeForm() {
+export default function CoffeeForm() {
   return (
     <>
     <div className='section-header'>
@@ -20,7 +20,7 @@ export default function CofeeForm() {
         })}
         <button className="button-card">
             <h4> Other </h4>
-            <p> n/a</p>
+            <p>n/a</p>
         </button>
     </div>
     </>  
