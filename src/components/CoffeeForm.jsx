@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 export default function CoffeeForm() {
     const [selectedCoffee, setSelectedCoffee ] = useState(null)
     const [showCoffeeTypes, setShowCoffeeTypes] = useState(false)
+    const [coffeeCost, setCoffeeCost ] = useState(0)
 
     return (
       <>
@@ -26,14 +27,17 @@ export default function CoffeeForm() {
             )
           })}
           <button onClick={()=>{
-            setSelectedCoffee(false)
+            setSelectedCoffee(null)
             setShowCoffeeTypes(true)
           }} className={'button-card'  + ( showCoffeeTypes ? " coffee-button-selected " : " ")}>
               <h4> Other </h4>
               <p>n/a</p>
           </button>
       </div>
-        <select id="coffee-list" name="coffee-lis">
+        { showCoffeeTypes && (
+            <select onChange={(e) => {
+                setSelectedCoffee(e.target.value)
+            }} id="coffee-list" name="coffee-lis">
             <option value={null}> Select Type </option>
             {coffeeOptions.map((option, optionIndex) => {
             return (
@@ -42,7 +46,8 @@ export default function CoffeeForm() {
                 </option>
             )
             })}
-        </select>
+            </select>
+        )}
         <h4> Add the cost ($) </h4>
         <input className='w-full' type='number' placeholder='4.50'/>
         <h4> Time of consumption </h4>
