@@ -1,7 +1,11 @@
-import React from 'react'
 import { coffeeOptions } from '../utils'
+import React, { useState } from 'react'
+
 
 export default function CoffeeForm() {
+    const [selectedCoffee, setSelectedCoffee ] = useState(null)
+    const [showCoffeeTypes, setShowCoffeeTypes] = useState(false)
+
     return (
       <>
       <div className='section-header'>
@@ -12,13 +16,19 @@ export default function CoffeeForm() {
       <div className='coffee-grid'>
           { coffeeOptions.slice(0, 5).map((option, optionIndex) => {
             return (
-            <button className='button-card' key={option.name}>
+            <button onClick={()=>{
+                setSelectedCoffee(option.name)
+                setShowCoffeeTypes(false)
+            }} className={'button-card'  + (option.name === selectedCoffee ? " coffee-button-selected " : " ")} key={option.name}>
               <h4>{option.name}</h4>
               <p>{option.caffeine} mg</p>
             </button>
             )
           })}
-          <button className="button-card">
+          <button onClick={()=>{
+            setSelectedCoffee(false)
+            setShowCoffeeTypes(true)
+          }} className={'button-card'  + ( showCoffeeTypes ? " coffee-button-selected " : " ")}>
               <h4> Other </h4>
               <p>n/a</p>
           </button>
