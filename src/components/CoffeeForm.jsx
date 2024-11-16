@@ -11,8 +11,8 @@ export default function CoffeeForm() {
       <h4>Select coffee type</h4>
       <div className='coffee-grid'>
           { coffeeOptions.slice(0, 5).map((option, optionIndex) => {
-            return(
-            <button className='button-card' key={{optionIndex}}>
+            return (
+            <button className='button-card' key={option.name}>
               <h4>{option.name}</h4>
               <p>{option.caffeine} mg</p>
             </button>
@@ -23,7 +23,7 @@ export default function CoffeeForm() {
               <p>n/a</p>
           </button>
       </div>
-        <select id="coffee-list" name="coffee-list">
+        <select id="coffee-list" name="coffee-lis">
             <option value={null}> Select Type </option>
             {coffeeOptions.map((option, optionIndex) => {
             return (
@@ -55,7 +55,7 @@ export default function CoffeeForm() {
                     {[0, 5, 10, 15, 30, 45].map((mins, minsIndex) => {
                         return (
                             <option key={minsIndex} value={mins}>
-                                {minute}
+                                {mins}
                             </option>
                         )
                     })}
