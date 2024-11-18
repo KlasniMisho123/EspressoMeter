@@ -6,8 +6,12 @@ export default function CoffeeForm() {
     const [selectedCoffee, setSelectedCoffee ] = useState(null)
     const [showCoffeeTypes, setShowCoffeeTypes] = useState(false)
     const [coffeeCost, setCoffeeCost ] = useState(0)
-    cosnt [hour, setHour ] = useState(0)
-    cosnt [min, setMin ] = useState(0)
+    const [hour, setHour ] = useState(0)
+    const [min, setMin ] = useState(0)
+
+    function handleSubmit() {
+        console.log("Hour, Min, $: ",hour, min, coffeeCost)
+    }
 
     return (
       <>
@@ -85,7 +89,7 @@ export default function CoffeeForm() {
                     })}
                 </select>
             </div>
-            <button>
+            <button onClick={handleSubmit}>
                 <p>Add Entry</p>
             </button>
         </div>
