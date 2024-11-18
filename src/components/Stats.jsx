@@ -1,5 +1,5 @@
 import React from 'react'
-import { calculateCurrentCaffeineLevel, coffeeConsumptionHistory, statusLevels } from '../utils'
+import { calculateCoffeeStats, calculateCurrentCaffeineLevel, coffeeConsumptionHistory, statusLevels } from '../utils'
 
 function StatCard(props) {
   const {lg, title, children } = props
@@ -13,15 +13,14 @@ function StatCard(props) {
 }
 
 export default function Stats() {
-  const stats = {
-    daily_caffeine:240,
-    daily_cost: 6.8,
-    average_coffees: 2.3,
-    total_cost: 220
-  }
+  const stats = calculateCoffeeStats(coffeeConsumptionHistory)
 
   const caffeineLevel = calculateCurrentCaffeineLevel(coffeeConsumptionHistory)
+  const warning = caffeineLevel < statusLevels["low"].maxLevel ?
+  "low" : caffeineLevel < statusLevels["moderate"].maxLevel ?
+  "moderate" : "high" 
 
+  console.log("LEVEL: ", warning)
   return (
     <>
       <div className='selection-header'>
@@ -36,10 +35,18 @@ export default function Stats() {
               <p>{statusLevels['low'].description}</p>
             </div>
           </StatCard>
-          <StatCard title="Daily Caffeine"></StatCard>
-          <StatCard title="Avg # of Coffees"></StatCard>
-          <StatCard title="Daily Cost ($) "></StatCard>
-          <StatCard title="Total Cost ($) "></StatCard>
+          <StatCard title="Daily Caffeine">
+            <p><span className='stat-text'>{stats.daily_caffeine}</span>mg</p>
+          </StatCard>
+          <StatCard title="Avg # of Coffees">
+            <p><span className='stat-text'>{stats.average_coffees}</span></p>
+          </StatCard>
+          <StatCard title="Daily Cost ($) ">
+            <p><span className='stat-text'>{stats.daily_cost}</span>$</p>
+          </StatCard>
+          <StatCard title="Total Cost ($) ">
+            <p><span className='stat-text'>{stats.total_cost}</span>$</p>
+          </StatCard>
       </div>
     </>
   )
