@@ -6,6 +6,8 @@ export default function CoffeeForm() {
     const [selectedCoffee, setSelectedCoffee ] = useState(null)
     const [showCoffeeTypes, setShowCoffeeTypes] = useState(false)
     const [coffeeCost, setCoffeeCost ] = useState(0)
+    cosnt [hour, setHour ] = useState(0)
+    cosnt [min, setMin ] = useState(0)
 
     return (
       <>
@@ -49,12 +51,17 @@ export default function CoffeeForm() {
             </select>
         )}
         <h4> Add the cost ($) </h4>
-        <input className='w-full' type='number' placeholder='4.50'/>
+        <input className='w-full' type='number' value={coffeeCost} onChange={(e) => {
+            setCoffeeCost(e.target.value)
+        }}
+        placeholder='4.50'/>
         <h4> Time of consumption </h4>
         <div className='time-entry'>
             <div>
                 <h6>Hours</h6>
-                <select id='hours-select'>
+                <select id='hours-select' onChange={(e) =>{
+                    setHour(e.target.value)
+                }} >
                     {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].map((hour, hourIndex) => {
                         return (
                             <option key={hourIndex} value={hour}>
@@ -66,7 +73,9 @@ export default function CoffeeForm() {
             </div>
             <div>
                 <h6>Minutes</h6>
-                <select id='mins-select'>
+                <select id='mins-select' onChange={(e) =>{
+                    setMin(e.target.value)
+                }} >
                     {[0, 5, 10, 15, 30, 45].map((mins, minsIndex) => {
                         return (
                             <option key={minsIndex} value={mins}>
