@@ -12,7 +12,7 @@ export default function History() {
       <div className='coffee-history'>
         {Object.keys(coffeeConsumptionHistory).sort((a,b) => b - a).map
         ((utcTime, coffeeIndex) => {
-          const coffee = coffeeConsumptionHistory(utcTime)
+          const coffee = coffeeConsumptionHistory[utcTime]
           const timeSinceConsume = timeSinceConsumption(utcTime)
           const originalAmount = getCaffeineAmount(coffee.name)
           const remainingAmount = calculateCurrentCaffeineLevel({
@@ -20,10 +20,10 @@ export default function History() {
           })
 
           const summary = `${coffee.name} | ${timeSinceConsume} |
-          ${coffee.cost} | ${originalAmount}mg / ${remainingAmount}mg`
+          ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
 
             return (
-              <div title={summary} key={coffeeIndex}> 
+              <div  title={summary} key={coffeeIndex}> 
                 <i className='fa-solid fa-mug-hot' />
               </div> 
             )
