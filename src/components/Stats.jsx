@@ -23,7 +23,7 @@ export default function Stats() {
   console.log("LEVEL: ", warning)
   return (
     <>
-      <div className='selection-header'>
+      <div className='section-header'>
         <i className='fa-solid fa-chart-simple'/>
         <h2>Stats</h2>
       </div>
