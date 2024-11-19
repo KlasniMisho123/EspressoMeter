@@ -20,7 +20,7 @@ export default function Stats() {
   "low" : caffeineLevel < statusLevels["moderate"].maxLevel ?
   "moderate" : "high" 
 
-  console.log("LEVEL: ", warning)
+  // console.log("LEVEL: ", warning)
   return (
     <>
       <div className='section-header'>
