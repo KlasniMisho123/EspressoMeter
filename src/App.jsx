@@ -7,7 +7,7 @@ import History from './components/History';
 
 function App() {
   
-  const isAutenticated = false;
+  const isAutenticated = true;
 
   const authenticaedContent = (
     <>
