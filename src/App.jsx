@@ -7,7 +7,7 @@ import History from './components/History';
 
 function App() {
   
-  const isAutenticated = true;
+  const isAutenticated = false;
 
   const authenticaedContent = (
     <>
@@ -19,7 +19,7 @@ function App() {
   return (
     <Layout >
       <Hero /> 
-      <CoffeeForm />
+      <CoffeeForm isAutenticated ={isAutenticated} />
       {isAutenticated && (authenticaedContent)}
     </Layout>
   )

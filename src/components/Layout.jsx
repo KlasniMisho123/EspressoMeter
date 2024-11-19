@@ -27,15 +27,12 @@ export default function Layout(props) {
         </footer>
     )
 
-    function handleCloseModal() {
-        setShowModal(false)
-    }
 
 
  return(
     <>
     {showModal && (
-        <Modal  handleCloseModal={handleCloseModal}> 
+        <Modal  handleCloseModal={()=>{ setShowModal(false) }}> 
             <Authentication/>
         </Modal>
     )}
