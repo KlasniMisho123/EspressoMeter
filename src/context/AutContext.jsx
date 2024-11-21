@@ -15,7 +15,8 @@ export function AuthProvider(props) {
     const [ globalUser, setGlobalUser ] = useState(null)
     const [globalData, setGlobalData] = useState(null)
     const [isLoading, setIsLoading ] = useState(false)
-    
+    const [userState, setUserState ] = useState(null)  
+
     function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
     }
