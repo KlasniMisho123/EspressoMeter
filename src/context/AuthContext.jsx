@@ -38,10 +38,13 @@ export function AuthProvider(props) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             // if there's no user, empty the user state and return from this listener
-            if (!user) { return }
+            if (!user) { 
+                console.log("No active user")
+                return 
+            }
             // if there is a user, then check if the user has data in database, and if they do,
             //  then fetch said data and update the global state
-            try {
+            try {              
                 setIsLoading(true)
 
                 //first we create a reference for the document (labeled json object), and then we get the doc,
