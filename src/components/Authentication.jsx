@@ -10,33 +10,33 @@ export default function Authentication() {
 
   const {signup, login} = useAuth()
 
-  async function handleAuthentication() {
-    if (!email || email.includes('@') || !password || password.length < 6 ||
-     isAuthenticating) { return }
-      try {
+  async function handleAuthenticate() {
+    if (!email || !email.includes('@') || !password || password.length < 6 || isAuthenticating) { return }
+    try {
         setIsAuthenticating(true)
         if (isRegistration) {
-          // Register user
-          await signup(email, password)
+            // register a user
+            await signup(email, password)
         } else {
-          // Login a user
-          await login(email, password)
+            // login a user
+            await login(email, password)
         }
-      } catch(err) {
+        handleCloseModal()
+    } catch (err) {
         console.log(err.message)
-      } finally {
+    } finally {
         setIsAuthenticating(false)
-      }
-    
-  }
+    }
+
+}
 
   return (
     <>
     <h2 className='sign-up-text'>{isRegistration ? "Sign up" : "Login"}</h2>
     <p>{isRegistration ? "Create an account" : "Sign in to your accaunt"} </p>
-    <input value={email} onchange={(e)=>{setEmail(e.target.value)}} placeholder='Email'/>
-    <input value={password} onchange={(e)=>{setPassword(e.target.value)}} placeholder='********' type='password' />
-    <button onClick={handleAuthentication}> <p> {isAuthenticating ? 'Authenticating...' : "Submit"} </p> </button>
+    <input value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Email'/>
+    <input value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder='********' type='password' />
+    <button onClick={handleAuthenticate}><p>{isAuthenticating ? 'Authenticating...' : 'Submit'}</p></button>
     <hr/>
     <div className='regster-content'>
       <p>{isRegistration ? "Already have account?" : "Don't have an account?"}</p>
