@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { useState, useEffect, useContext, createContext } from 'react'
 import { auth, db } from '../../firebase'
-import { send } from 'vite'
 import { doc, getDoc } from 'firebase/firestore'
 
 const AuthContext = createContext()
@@ -12,10 +11,9 @@ export function useAuth() {
 
 export function AuthProvider(props) {
     const { children } = props
-    const [ globalUser, setGlobalUser ] = useState(null)
+    const [globalUser, setGlobalUser] = useState(null)
     const [globalData, setGlobalData] = useState(null)
     const [isLoading, setIsLoading ] = useState(false)
-    const [userState, setUserState ] = useState(null)  
 
     function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -30,7 +28,7 @@ export function AuthProvider(props) {
     }
 
     function logout() {
-        setUserState(null)
+        setGlobalUser(null)
         setGlobalData(null)
         return signOut(auth)
     }
