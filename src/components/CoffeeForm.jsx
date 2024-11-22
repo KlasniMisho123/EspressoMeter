@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Authentication from './Authentication'
 import Modal from './Modal'
 import { useAuth } from '../context/AuthContext'
+import { doc, setDoc } from 'firebase/firestore'
 
 
 export default function CoffeeForm(props) {
@@ -15,9 +16,9 @@ export default function CoffeeForm(props) {
     const [hour, setHour ] = useState(0)
     const [min, setMin ] = useState(0)
 
-    const { globalData } = useAuth()
+    const { globalData, setGlobalData, globalUser } = useAuth()
 
-    function handleSubmit() {
+     async function handleSubmit() {
         if(!isAutenticated) {
             setShowModal(true)
             return
@@ -28,14 +29,27 @@ export default function CoffeeForm(props) {
 
         // then we're going to create new data object
         const newGlobalData = { 
-            ...globalData
+            ...(globalData || {})
         }
+        
+        const nowTime = date.now()
+        const timeToSubtract = (hour * 60 * 60 * 1000 ) + (min * 60 * 1000)
+        const timestamp = nowTime - timeToSubtract
 
+        const newData = {
+            name: selectedCoffee,
+            cost: coffeeCost
+        }
+        newGlobalData[timestamp] = newData
         // update globlas state
 
+        setGlobalData(newGlobalData)
         // persist the data in the firebase firestore
 
-        console.log("Hour, Min, $: ",hour, min, coffeeCost)
+        const userRef = doc(db, "users", globalUser.uid)
+        const res = await setDoc(userRef, {
+            [timestamp] : newData
+        }, {merge: true})
     }
 
     function handleCloseModal() {
