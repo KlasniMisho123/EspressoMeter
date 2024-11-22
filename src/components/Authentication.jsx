@@ -41,7 +41,7 @@ export default function Authentication(props) {
     <h2 className='sign-up-text'>{isRegistration ? "Sign up" : "Login"}</h2>
     <p>{isRegistration ? "Create an account" : "Sign in to your accaunt"} </p>
     {error && (
-      <p> <i className="fa-solid fa-xmark" style={{ color: 'red' }}></i>{error} </p>
+      <p> <i className="fa-solid fa-xmark" style={{ color: 'red', fontSize: '16px', marginRight: '5px' }}></i>{error} </p>
     )}
     <input value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Email'/>
     <input value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder='********' type='password' />
