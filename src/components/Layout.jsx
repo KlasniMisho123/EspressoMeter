@@ -7,9 +7,8 @@ export default function Layout(props) {
     const { children } = props
 
     const [showModal, setShowModal] = useState(false)
-    const [isRegistered, setIsRegistered] = useState(true)
     
-    const { logout } = useAuth()
+    const { globalUser, logout } = useAuth()
 
     const header = (
         <header>
@@ -17,20 +16,15 @@ export default function Layout(props) {
                 <h1 className="text-gradient">ESPRESSO<span className="m-meter">𝔪</span>ETER</h1>
                 <p> For Coffee Insatiates</p>
             </div>
-            {isRegistered ? 
-            <button onClick={() => {
-                logout() 
-                setIsRegistered(false)
-                }}> 
-
+            { globalUser ? (
+            <button onClick={() => { logout() }}>        
                 <p>Log Out</p>
                 <i className="fa-solid fa-right-from-bracket"></i>
-            </button> :  
+            </button>) : (  
             <button onClick={() => {setShowModal(true)}}> 
                 <p>Sign up free</p>
                 <i className="fa-solid fa-mug-hot"></i>
-                
-            </button>}
+            </button> )}
         </header>
     )
 
