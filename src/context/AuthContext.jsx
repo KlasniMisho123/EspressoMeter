@@ -38,7 +38,6 @@ export function AuthProvider(props) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             // if there's no user, empty the user state and return from this listener
-            // console.log("CURRENT USER: ", user)
             setGlobalUser(user)
             
             if (!user) { 
@@ -57,8 +56,8 @@ export function AuthProvider(props) {
 
                 let firebaseData = {}    
                 if(docSnap.exists) {
-                    console.log("Found User Data")
                     firebaseData = docSnap.data()
+                    console.log("Found User Data")
                 }
 
                 setGlobalData(firebaseData)

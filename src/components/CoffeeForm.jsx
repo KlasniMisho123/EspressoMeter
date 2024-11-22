@@ -28,29 +28,38 @@ export default function CoffeeForm(props) {
         // define a guard clause that only submits the form if it is completed
         if (!selectedCoffee) {return}
 
+        try {
+            const newGlobalData = { 
+                ...(globalData || {})
+            }
+            
+            const nowTime = Date.now()
+            const timeToSubtract = (hour * 60 * 60 * 1000 ) + (min * 60 * 1000)
+            const timestamp = nowTime - timeToSubtract
+    
+            const newData = {
+                name: selectedCoffee,
+                cost: coffeeCost
+            }
+            newGlobalData[timestamp] = newData
+            // update globlas state
+    
+            setGlobalData(newGlobalData)
+            // persist the data in the firebase firestore
+    
+            const userRef = doc(db, "users", globalUser.uid)
+            const res = await setDoc(userRef, {
+                [timestamp] : newData
+            }, {merge: true})
+
+            setSelectedCoffee(null)
+            setHour(0)
+            setMin(0)
+            setCoffeeCost(0)
+        } catch(err) {
+            console.log(err.message)
+        } 
         // then we're going to create new data object
-        const newGlobalData = { 
-            ...(globalData || {})
-        }
-        
-        const nowTime = Date.now()
-        const timeToSubtract = (hour * 60 * 60 * 1000 ) + (min * 60 * 1000)
-        const timestamp = nowTime - timeToSubtract
-
-        const newData = {
-            name: selectedCoffee,
-            cost: coffeeCost
-        }
-        newGlobalData[timestamp] = newData
-        // update globlas state
-
-        setGlobalData(newGlobalData)
-        // persist the data in the firebase firestore
-
-        const userRef = doc(db, "users", globalUser.uid)
-        const res = await setDoc(userRef, {
-            [timestamp] : newData
-        }, {merge: true})
     }
 
     function handleCloseModal() {
