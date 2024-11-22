@@ -2,6 +2,7 @@ import { coffeeOptions } from '../utils'
 import React, { useState } from 'react'
 import Authentication from './Authentication'
 import Modal from './Modal'
+import { useAuth } from '../context/AuthContext'
 
 
 export default function CoffeeForm(props) {
@@ -14,19 +15,39 @@ export default function CoffeeForm(props) {
     const [hour, setHour ] = useState(0)
     const [min, setMin ] = useState(0)
 
+    const { globalData } = useAuth()
+
     function handleSubmit() {
         if(!isAutenticated) {
             setShowModal(true)
             return
         }
+
+        // define a guard clause that only submits the form if it is completed
+        if (!selectedCoffee) {return}
+
+        // then we're going to create new data object
+        const newGlobalData = { 
+            ...globalData
+        }
+
+        // update globlas state
+
+        // persist the data in the firebase firestore
+
         console.log("Hour, Min, $: ",hour, min, coffeeCost)
     }
+
+    function handleCloseModal() {
+        setShowModal(false)
+    }
+    
 
     return (
       <>
       {showModal && (
-        <Modal  handleCloseModal={()=> { setShowModal(false) }}> 
-            <Authentication handleCloseModal={()=> { setShowModal(false) }} />
+        <Modal  handleCloseModal={handleCloseModal}> 
+            <Authentication handleCloseModal={handleCloseModal} />
         </Modal>
     )}
       <div className='section-header'>
