@@ -1,2 +1,3 @@
 *-- Footer --
 *-- onHover Information w title -> fancier version --
+*-- authentication Errors, Error handles --

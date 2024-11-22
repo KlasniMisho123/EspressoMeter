@@ -2,14 +2,15 @@
 import React, {useState} from 'react'
 import { useAuth } from '../context/AuthContext'
 
-export default function Authentication() {
+export default function Authentication(props) {
 
   const [isRegistration, setIsRegistration] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isAuthenticating, setIsAuthenticating] = useState(false)
 
-  const {signup, login} = useAuth()
+  const { handleCloseModal } = props
+  const {signup, login } = useAuth()
 
   async function handleAuthenticate() {
     if (!email || !email.includes('@') || !password || password.length < 6 || isAuthenticating) { return }
