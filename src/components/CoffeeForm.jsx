@@ -4,6 +4,7 @@ import Authentication from './Authentication'
 import Modal from './Modal'
 import { useAuth } from '../context/AuthContext'
 import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 
 export default function CoffeeForm(props) {
@@ -32,7 +33,7 @@ export default function CoffeeForm(props) {
             ...(globalData || {})
         }
         
-        const nowTime = date.now()
+        const nowTime = Date.now()
         const timeToSubtract = (hour * 60 * 60 * 1000 ) + (min * 60 * 1000)
         const timestamp = nowTime - timeToSubtract
 
