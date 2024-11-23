@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Authentication from "./Authentication"
 import Modal from "./Modal"
 import { useAuth } from '../context/AuthContext'
+import Footer from './Footer'
 
 export default function Layout(props) {
     const { children } = props
@@ -28,13 +29,6 @@ export default function Layout(props) {
         </header>
     )
 
-    const footer = (
-        <footer>
-            <p><span className="text-gradient"> Espresso𝔪eter </span> was inspired by - <a target="_blank" href="https://www.smoljames.com">Smoljames </a> 
-            using the - <a  target="_blank" href="https://www.fantacss.smoljames.com">FantaCSS</a> design library. <br/>Check out the project on <a target="_blank" href="https://github.com/KlasniMisho123/EspressoMeter">GitHub</a> <i className="fa-brands fa-github"></i></p>
-        </footer>
-    )
-
 function handleCloseModal() {
     setShowModal(false)
 }
@@ -52,7 +46,7 @@ function handleCloseModal() {
     <main>
         {children}
     </main>
-    {footer}
+    <Footer />
     </>
  )
 }

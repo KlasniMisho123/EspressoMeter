@@ -243,6 +243,7 @@ footer {
   align-items: start;
   gap: 2rem;
   flex-wrap: wrap;
+  background-color: #173B45;
 }
 
 .sign-up-text {
@@ -257,6 +258,30 @@ footer {
 
 .m-meter {
   font-size: 48px;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  background-color: #F8EDED;
+  margin-left: 4px;
+  padding: 4px;
+}
+
+
+.company-header {
+  display: flex;
+  align-items: center;
+}
+
+.company-body {
+
+}
+
+.company-logo {
+  height: 50px;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
 
 
