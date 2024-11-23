@@ -13,7 +13,11 @@ export default function Footer() {
                 <p>A web app that allows you to track your coffee stats, including total money spent, current caffeine level, most consumed coffee type, and more.</p>
             </div>
         </div>
-       <div>2</div>
+       <div className='footer-element'>
+            <span style={{color:'white'}}> Useful Links </span>
+            <div className='doted-line'> <div className='dot'/> <div className='dot'/> </div>
+            <div> </div>
+       </div>
     </footer>
   )
 }
