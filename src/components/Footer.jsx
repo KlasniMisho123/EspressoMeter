@@ -3,14 +3,14 @@ import espressoMLogo from '../../public/espresso-logo.png'
 
 export default function Footer() {
   return (
-    <footer className='footer-div' >
+    <footer>
         <div className='company-info'> 
             <div className='company-header'>
                 <img className='company-logo' src={espressoMLogo} />
                 <p className='text-gradient'>ESPRESSO<span style={{ fontSize: "24px" }}>𝔪</span>ETER</p> 
             </div>
             <div className='company-body'>
-                <p> body </p>
+                <p>A web app that allows you to track your coffee stats, including total money spent, current caffeine level, most consumed coffee type, and more.</p>
             </div>
         </div>
        <div>2</div>
