@@ -1,6 +1,7 @@
 *-- Footer --
 *-- onHover Information w title -> fancier version --
 *-- authentication Errors, Error handles --
-*-- Loading Animations -- | app.jsx, login,logout forms |
+*-- Loading Animations -- | app.jsx, login, logout forms |
 *-- remove CofeeData --
 *-- logo --
+*-- Readme Setup --
