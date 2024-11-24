@@ -88,6 +88,7 @@ h2 {
   align-items: center;
   height: 2px;
 }
+
 .dot {
   height: 6px;
   width: 6px;
@@ -103,8 +104,9 @@ h2 {
 .footer-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 10px;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .footer-list-element {
@@ -120,6 +122,11 @@ h2 {
 
 .fa-greater-than {
   color: gray;
+}
+
+.footer-list-element:hover *{
+  color: #b52f0a;
+  animation: dashRight 0.5s ease-in-out forwards;
 }
 
 .font-bolder {
@@ -279,8 +286,8 @@ h2 {
 }
 
 footer {
-  margin-top: 5rem;
-  padding: 4rem 0 1rem 0;
+  margin-top: 2rem;
+  padding: 2rem 1rem 0.5rem 1rem;
   display: flex;
   align-items: start;
   gap: 2rem;
@@ -327,6 +334,17 @@ footer {
   height: 50px;
   object-fit: cover;
   margin-bottom: 15px;
+}
+
+
+@keyframes dashRight {
+  0% {
+    transform: translateX(0);
+  }
+  
+  100% {
+    transform: translateX(10px);
+  }
 }
 
 
