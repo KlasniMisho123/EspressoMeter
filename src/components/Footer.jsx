@@ -16,7 +16,12 @@ export default function Footer() {
        <div className='footer-element'>
             <span style={{color:'white'}}> Useful Links </span>
             <div className='doted-line'> <div className='dot'/> <div className='dot'/> </div>
-            <div> </div>
+            <div className='footer-list'>
+              <p className='footer-list-element'><i className="fa-solid fa-greater-than"></i> <a target="_blank" href="https://firebase.google.com/">Firebase</a> </p>
+              <p className='footer-list-element'><i className="fa-solid fa-greater-than"></i> <a target="_blank" href="https://firebase.google.com/">Firebase</a> </p>
+              <p className='footer-list-element'><i className="fa-solid fa-greater-than"></i> <a target="_blank" href="https://firebase.google.com/">Firebase</a> </p>
+              <p className='footer-list-element'><i className="fa-solid fa-greater-than"></i> <a target="_blank" href="https://firebase.google.com/">Firebase</a> </p> 
+            </div>
        </div>
     </footer>
   )
