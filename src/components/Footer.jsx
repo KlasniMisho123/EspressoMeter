@@ -30,10 +30,6 @@ export default function Footer() {
        </div>
        <p className='footer-text'><span className="text-gradient"> Espresso𝔪eter </span> was inspired by - <a target="_blank" href="https://www.smoljames.com">Smoljames </a> 
        using the - <a  target="_blank" href="https://www.fantacss.smoljames.com">FantaCSS</a> design library. <br/>Check out the project on <a target="_blank" href="https://github.com/KlasniMisho123/EspressoMeter">GitHub</a> <i className="fa-brands fa-github"></i></p>
-
-       <div>
-        <p> @Copyright {currentYear}.All Rights Reserved</p>
-       </div>
     </footer>
   )
 }
