@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { calculateCurrentCaffeineLevel, coffeeConsumptionHistory, getCaffeineAmount, timeSinceConsumption } from '../utils'
 import { useAuth } from '../context/AuthContext'
 
 export default function History() {
 
   const { globalData } = useAuth()
+  const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
+  const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(0)
 
   return (
     <>
@@ -27,12 +29,20 @@ export default function History() {
           ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
 
             return (
-              <div  title={summary} key={coffeeIndex}> 
-                <i className='fa-solid fa-mug-hot' />
-              </div> 
+                <button key={coffeeIndex} title={summary} onClick={()=> {
+                  setCurrentCoffeeStat(summary)
+                  setCurrentCoffeeIndex(coffeeIndex)
+                  if(currentCoffeeIndex == coffeeIndex) {
+                    setCurrentCoffeeIndex(0)
+                    setCurrentCoffeeStat("")
+                  }
+                  }}>
+                  <i className='fa-solid fa-mug-hot' />
+                </button>
             )
         })}
       </div>
+      {currentCoffeeStat}
     </>
   )
 }
