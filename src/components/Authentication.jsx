@@ -14,7 +14,16 @@ export default function Authentication(props) {
   const {signup, login } = useAuth()
 
   async function handleAuthenticate() {
-    if (!email || !email.includes('@') || !password || password.length < 6 || isAuthenticating) { return }
+    if (isAuthenticating) { return }
+    if (!email || !email.includes('@')) {
+      setError("Please enter a valid email address.")
+      return
+    }
+    if (!password || password.length < 6) {
+       setError("Password must be at least 6 characters long.")
+      return
+    }
+
     try {
         setIsAuthenticating(true)
         setError(null)
@@ -29,7 +38,7 @@ export default function Authentication(props) {
         handleCloseModal()
     } catch (err) {
         console.log(err.message)
-        setError(err.message)
+        setError("Email or password is incorrect. Please try again.")
     } finally {
         setIsAuthenticating(false)
     }

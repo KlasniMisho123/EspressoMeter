@@ -1,5 +1,5 @@
 *-- onHover Information w title -> fancier version --
-*-- authentication Errors, Error handles --
-*-- Loading Animations -- | app.jsx, login, logout forms |
+*-- total users, total submits ?!.
+*-- Loading Animations -- | app.jsx, authentication forms |
 *-- remove CofeeData --
 *-- Readme Setup --
