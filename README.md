@@ -2,7 +2,7 @@
 
 Expressometer is a web application that helps users track their coffee consumption habits. Users can input details like the time they consumed coffee, the type of coffee, and its cost. The app calculates and displays current caffeine levels, total daily caffeine intake, top consumed coffees, daily cost, and other helpful insights.
 
-Features 🚀
+# Features 🚀
 
 Track Coffee Consumption: Log coffee consumption details, including time, type, and cost.
 Current Caffeine Level: Real-time calculation of current caffeine in the user's system.
