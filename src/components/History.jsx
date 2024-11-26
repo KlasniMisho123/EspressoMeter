@@ -6,7 +6,7 @@ export default function History() {
 
   const { globalData } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
-  const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(0)
+  const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function History() {
                   setCurrentCoffeeStat(summary)
                   setCurrentCoffeeIndex(coffeeIndex)
                   if(currentCoffeeIndex == coffeeIndex) {
-                    setCurrentCoffeeIndex(0)
+                    setCurrentCoffeeIndex(-1)
                     setCurrentCoffeeStat("")
                   }
                   }}>
