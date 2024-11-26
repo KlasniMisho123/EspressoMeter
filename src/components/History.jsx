@@ -7,7 +7,6 @@ export default function History() {
   const { globalData } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-  const [currentArray, setCurrentArray ] = useState("e")  
 
   return (
     <>
@@ -31,9 +30,8 @@ export default function History() {
 
             return (
                 <button key={coffeeIndex} title={summary} onClick={()=> {
-                  setCurrentCoffeeStat(summary)
+                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount])
                   setCurrentCoffeeIndex(coffeeIndex)
-                  setCurrentArray([coffee.name, timeSinceConsume, remainingAmount, originalAmount])
                   if(currentCoffeeIndex == coffeeIndex) {
                     setCurrentCoffeeIndex(-1)
                     setCurrentCoffeeStat("")
@@ -44,8 +42,16 @@ export default function History() {
             )
         })}
       </div>
-      {currentCoffeeStat}
-      <div>{currentArray}</div>
+      {currentCoffeeStat?   <div className='selected-coffee-section'>
+        <div>
+          <img style={{height: '80px', objectFit: "cover"}} src='../../public/coffee-cup.png' />
+        </div>
+        <div className='coffee-stat-div'>
+            <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
+            <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
+            <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
+        </div>
+      </div> : "" }
     </>
   )
 }

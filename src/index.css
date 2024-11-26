@@ -375,6 +375,28 @@ footer {
   color: black;
 }
 
+.selected-coffee-section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.coffee-stat-div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.coffee-stat-div > p > span{
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px; 
+}
+
+
 @keyframes dashRight {
   0% {
     transform: translateX(0);
