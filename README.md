@@ -1,8 +1,8 @@
-## Expressometer ☕
+# Expressometer ☕
 
 Expressometer is a web application that helps users track their coffee consumption habits. Users can input details like the time they consumed coffee, the type of coffee, and its cost. The app calculates and displays current caffeine levels, total daily caffeine intake, top consumed coffees, daily cost, and other helpful insights.
 
-# Features 🚀
+## Features 🚀
 
 Track Coffee Consumption: Log coffee consumption details, including time, type, and cost.
 Current Caffeine Level: Real-time calculation of current caffeine in the user's system.
@@ -17,7 +17,7 @@ Backend: Express.js
 Database: Firebase
 Styling: CSS
 
-Setup Instructions 🖥️
+## Setup Instructions 🖥️
 
 Prerequisites
 Ensure you have the following installed on your system:
@@ -60,7 +60,7 @@ bash
 Copy code
 npm run build
 
-Usage 📊
+## Usage 📊
 
 Input Coffee Consumption: Log details like coffee type, time consumed, and cost.
 Track Statistics: View daily caffeine intake, average coffee count, and daily cost.
@@ -72,10 +72,10 @@ Analytics for weekly, monthly, and yearly trends.
 Contributing 🤝
 We welcome contributions! Feel free to submit issues or pull requests.
 
-License 📄
+## License 📄
 This project is licensed under the MIT License.
 
-Contact 📧
+## Contact 📧
 For questions or feedback, please reach out to your mikheili.silagava@gmail.com
 
 Let me know if you'd like to customize this further! 😊
