@@ -7,6 +7,7 @@ export default function History() {
   const { globalData } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
+  const [currentArray, setCurrentArray ] = useState("e")  
 
   return (
     <>
@@ -32,6 +33,7 @@ export default function History() {
                 <button key={coffeeIndex} title={summary} onClick={()=> {
                   setCurrentCoffeeStat(summary)
                   setCurrentCoffeeIndex(coffeeIndex)
+                  setCurrentArray([coffee.name, timeSinceConsume, remainingAmount, originalAmount])
                   if(currentCoffeeIndex == coffeeIndex) {
                     setCurrentCoffeeIndex(-1)
                     setCurrentCoffeeStat("")
@@ -43,6 +45,7 @@ export default function History() {
         })}
       </div>
       {currentCoffeeStat}
+      <div>{currentArray}</div>
     </>
   )
 }
