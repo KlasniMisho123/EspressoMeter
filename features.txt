@@ -1,4 +1,3 @@
-*-- onHover Information w title -> fancier version | FirstCup Error indexDefault-0 -- History.jsx
 *-- total users, total submits ?!.
 *-- Loading Animations -- | app.jsx, authentication forms |
 *-- remove CofeeData --
