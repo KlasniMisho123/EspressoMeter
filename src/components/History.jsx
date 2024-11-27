@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 
 export default function History() {
 
-  const { globalData } = useAuth()
+  const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
 
@@ -51,7 +51,11 @@ export default function History() {
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
             <button onClick={()=>{
+              // set global remove data 
+              //  handlesubmit- coffeeform.jsx -- handleRemove if==1
+
               console.log("currentCoffeeStat: ", currentCoffeeStat)
+              console.log(globalUser.uid)
             }}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
