@@ -50,6 +50,9 @@ export default function History() {
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
+            <button onClick={()=>{
+              console.log("currentCoffeeStat: ", currentCoffeeStat)
+            }}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
     </>
