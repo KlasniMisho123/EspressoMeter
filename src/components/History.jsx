@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
 import { calculateCurrentCaffeineLevel, coffeeConsumptionHistory, getCaffeineAmount, timeSinceConsumption } from '../utils'
 import { useAuth } from '../context/AuthContext'
+import { doc, deleteDoc  } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 export default function History() {
 
-  const { globalData, globalUser } = useAuth()
+  const { globalData, globalRemoveData, setGlobalRemoveData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
+
+
+  async function handleRemoveData() {
+    // set global remove data 
+    //  handlesubmit- coffeeform.jsx -- handleRemove if==1
+    console.log("globalData: ", globalData) 
+    console.log("currentCoffeeStat: ", currentCoffeeStat)
+    console.log(globalUser.uid)
+    try {
+
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
+
 
   return (
     <>
@@ -42,7 +59,7 @@ export default function History() {
             )
         })}
       </div>
-      {currentCoffeeStat?   <div className='selected-coffee-section'>
+      {currentCoffeeStat? <div className='selected-coffee-section'>
         <div>
           <img style={{height: '80px', objectFit: "cover"}} src='../../src/assets/coffee-cup.png' />
         </div>
@@ -50,13 +67,7 @@ export default function History() {
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
-            <button onClick={()=>{
-              // set global remove data 
-              //  handlesubmit- coffeeform.jsx -- handleRemove if==1
-
-              console.log("currentCoffeeStat: ", currentCoffeeStat)
-              console.log(globalUser.uid)
-            }}><i className="fa-solid fa-trash"></i> Remove </button>
+            <button onClick={handleRemoveData}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
     </>
