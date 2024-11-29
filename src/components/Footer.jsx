@@ -1,5 +1,5 @@
 import React from 'react'
-import espressoMLogo from '../../public/espresso-logo.png'
+import espressoMLogo from '../../src/assets/espresso-logo.png'
 
 
 

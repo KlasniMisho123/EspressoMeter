@@ -13,6 +13,7 @@ export function AuthProvider(props) {
     const { children } = props
     const [globalUser, setGlobalUser] = useState(null)
     const [globalData, setGlobalData] = useState(null)
+    const [globalRemoveData, setGlobalRemoveData] = useState(null)
     const [isLoading, setIsLoading ] = useState(false)
 
     function signup(email, password) {

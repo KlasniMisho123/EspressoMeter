@@ -44,7 +44,7 @@ export default function History() {
       </div>
       {currentCoffeeStat?   <div className='selected-coffee-section'>
         <div>
-          <img style={{height: '80px', objectFit: "cover"}} src='../../public/coffee-cup.png' />
+          <img style={{height: '80px', objectFit: "cover"}} src='../../src/assets/coffee-cup.png' />
         </div>
         <div className='coffee-stat-div'>
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
