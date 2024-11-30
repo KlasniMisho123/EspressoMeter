@@ -6,24 +6,30 @@ import { db } from '../../firebase'
 
 export default function History() {
 
-  const { globalData, globalRemoveData, setGlobalRemoveData, globalUser } = useAuth()
+  const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-
   
+  let globalRemoveData = {
+    
+  }
 
 
-  async function handleRemoveData() {
-    // set global remove data 
-    //  handlesubmit- coffeeform.jsx -- handleRemove if==1
-    // setGlobalRemoveData([globalUser,utcTime])
-    console.log("globalRemoveData: ", globalRemoveData)
-    console.log("globalData: ", globalData) 
-    console.log("coffee: ", currentCoffeeUid)
-    console.log("globalUser.uid: ",globalUser.uid)
-    // console.log("currentCoffeeStat: ", currentCoffeeStat)
+  async function handleRemoveData(utcTime) {
+    if (!utcTime || !globalUser.uid) {
+      console.warn("Missing utcTime or user ID.");
+      return;
+    }
+
+    globalRemoveData = {
+      currentUser: globalUser.uid,
+      removeTarget: utcTime
+    }
+
     try {
+        const docRef = doc(db, "users", globalUser.uid)
 
+        console.log("docRef: ", docRef)
     } catch(err) {
       console.log(err.message)
     }
@@ -41,7 +47,6 @@ export default function History() {
         {Object.keys(globalData).sort((a,b) => b - a).map
         ((utcTime, coffeeIndex) => {
           const coffee = globalData[utcTime]
-          console.log("utcTime: ", utcTime)
           const timeSinceConsume = timeSinceConsumption(utcTime)
           const originalAmount = getCaffeineAmount(coffee.name)
           const remainingAmount = calculateCurrentCaffeineLevel({
@@ -73,8 +78,8 @@ export default function History() {
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
-            <button onClick={handleRemoveData}><i className="fa-solid fa-trash"></i> Remove </button>
-            {currentCoffeeStat[4]}
+            <button onClick={() => {handleRemoveData(currentCoffeeStat[4])}}><i className="fa-solid fa-trash"></i> Remove </button>
+            
         </div>
       </div> : "" }
     </>

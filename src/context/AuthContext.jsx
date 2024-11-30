@@ -13,7 +13,6 @@ export function AuthProvider(props) {
     const { children } = props
     const [globalUser, setGlobalUser] = useState(null)
     const [globalData, setGlobalData] = useState(null)
-    const [globalRemoveData, setGlobalRemoveData] = useState(null)
     const [isLoading, setIsLoading ] = useState(false)
 
     function signup(email, password) {
@@ -34,7 +33,7 @@ export function AuthProvider(props) {
         return signOut(auth)
     }
     
-    const value = { globalUser, globalData, setGlobalData, isLoading, globalRemoveData, setGlobalRemoveData ,signup, login, logout }
+    const value = { globalUser, globalData, setGlobalData, isLoading, signup, login, logout }
    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
