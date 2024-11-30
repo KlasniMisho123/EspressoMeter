@@ -396,6 +396,13 @@ footer {
   margin-right: 5px; 
 }
 
+.coffee-delete-btn:hover {
+  background-color: #cd301f; /* Darker red background on hover */
+  color: #fff;               /* White text on hover */
+  border-color: #cd301f;     /* Darker red border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+}
+
 @keyframes dashRight {
   0% {
     transform: translateX(0);

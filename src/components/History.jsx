@@ -75,14 +75,13 @@ export default function History() {
       </div>
       {currentCoffeeStat? <div className='selected-coffee-section'>
         <div>
-          <img style={{height: '80px', objectFit: "cover"}} src='../../src/assets/coffee-cup.png' />
+          <img style={{height: '100px', objectFit: "cover"}} src='../../src/assets/coffee-cup.png' />
         </div>
         <div className='coffee-stat-div'>
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
-            <button onClick={() => {handleRemoveData(currentCoffeeStat[4])}}><i className="fa-solid fa-trash"></i> Remove </button>
-            
+            <button  className='coffee-delete-btn' onClick={() => {handleRemoveData(currentCoffeeStat[4])}}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
     </>
