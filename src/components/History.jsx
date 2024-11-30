@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { calculateCurrentCaffeineLevel, coffeeConsumptionHistory, getCaffeineAmount, timeSinceConsumption } from '../utils'
 import { useAuth } from '../context/AuthContext'
-import { doc, deleteDoc  } from 'firebase/firestore'
+import { doc, deleteField, updateDoc  } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 export default function History() {
@@ -28,10 +28,13 @@ export default function History() {
 
     try {
         const docRef = doc(db, "users", globalUser.uid)
-
-        console.log("docRef: ", docRef)
+        
+        await updateDoc(docRef, {
+          [utcTime]: deleteField()
+        });
+        console.log(`Successfully removed utcTime: ${utcTime} for user: ${globalUser.uid}`);
     } catch(err) {
-      console.log(err.message)
+      console.error("Error removing data:", err.message);
     }
   }
 
