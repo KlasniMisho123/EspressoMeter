@@ -10,13 +10,18 @@ export default function History() {
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
 
+  
+
 
   async function handleRemoveData() {
     // set global remove data 
     //  handlesubmit- coffeeform.jsx -- handleRemove if==1
+    // setGlobalRemoveData([globalUser,utcTime])
+    console.log("globalRemoveData: ", globalRemoveData)
     console.log("globalData: ", globalData) 
-    console.log("currentCoffeeStat: ", currentCoffeeStat)
-    console.log(globalUser.uid)
+    console.log("coffee: ", currentCoffeeUid)
+    console.log("globalUser.uid: ",globalUser.uid)
+    // console.log("currentCoffeeStat: ", currentCoffeeStat)
     try {
 
     } catch(err) {
@@ -36,6 +41,7 @@ export default function History() {
         {Object.keys(globalData).sort((a,b) => b - a).map
         ((utcTime, coffeeIndex) => {
           const coffee = globalData[utcTime]
+          console.log("utcTime: ", utcTime)
           const timeSinceConsume = timeSinceConsumption(utcTime)
           const originalAmount = getCaffeineAmount(coffee.name)
           const remainingAmount = calculateCurrentCaffeineLevel({
@@ -47,7 +53,7 @@ export default function History() {
 
             return (
                 <button key={coffeeIndex} title={summary} onClick={()=> {
-                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount])
+                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
                   setCurrentCoffeeIndex(coffeeIndex)
                   if(currentCoffeeIndex == coffeeIndex) {
                     setCurrentCoffeeIndex(-1)
@@ -68,6 +74,7 @@ export default function History() {
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
             <button onClick={handleRemoveData}><i className="fa-solid fa-trash"></i> Remove </button>
+            {currentCoffeeStat[4]}
         </div>
       </div> : "" }
     </>
