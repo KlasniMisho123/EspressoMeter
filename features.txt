@@ -2,4 +2,6 @@
 *-- Loading Animations -- | app.jsx, authentication forms |
 !-- remove CofeeData -- Update After Remove.
 !-- setHour(0), setMin(0) reset after Add Entry. -- 
-            
+!-- totalUsers - 0, missing Error:  Missing or insufficient permissions -- Hero.jsx
+
+--* revious rules -  --

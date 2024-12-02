@@ -426,6 +426,12 @@ footer {
   transition: transform 0.3s ease-in-out;
 }
 
+.loading-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 24px;
+}
 .web-stats-grid > div:hover {
   transform: scale(1.2);
 }
@@ -464,6 +470,18 @@ footer {
   color: rgb(242, 84, 91);
 }
 
+.loading-icon {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); 
+  }
+  100% {
+    transform: rotate(360deg); 
+  }
+}
 
 
 @keyframes dashRight {

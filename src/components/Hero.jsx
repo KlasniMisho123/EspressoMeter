@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import WebStats from './WebStats'
+import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../firebase'
 
 export default function Hero() {
+  const [totalUsers, setTotalUsers ] = useState(0)
+  const [totalCommits, setTotalCommits ] = useState(0)
+  const [avgRateing, setAvgRateing ] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+
+  async function countUsers() {
+    setIsLoading(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      const userCount = querySnapshot.size;
+      // totalUsers - 0, missing Error:  Missing or insufficient permissions
+      setTotalUsers(userCount)
+    } catch (err) {
+      // console.log("Error: ", err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    countUsers();
+  }, []); 
 
   const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
 
@@ -27,13 +50,15 @@ export default function Hero() {
               5 hours, later, you'll still have about
                100 mg of caffeine in your system </p>
        </div>
+       
         <div className='web-stats-layout'>
-          <div className='web-stats-grid'>
+          {isLoading? (<div className='loading-div'><i className="fa-solid fa-gear loading-icon" style={{fontSize: "40px"}}></i> Loading</div>):
+          (<div className='web-stats-grid'>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
             <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${20} +`} title={'With You'} classNumber={"three"}/>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
-          </div>
+          </div>)}
         </div>
         
        
