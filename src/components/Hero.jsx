@@ -2,6 +2,9 @@ import React from 'react'
 import WebStats from './WebStats'
 
 export default function Hero() {
+
+  const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
+
   return (
     <>
         <h1> Coffee Tracking for Cofee <abbr title="An Enthusiast or devotee">Fiends</abbr></h1>
@@ -25,10 +28,10 @@ export default function Hero() {
        </div>
         <div className='web-stats-layout'>
           <div className='web-stats-grid'>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={170} title={'Total Users'} classNumber={"one"}/>
-            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={5778 } title={'Commits'} classNumber={"two"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
+            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
             <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={20} title={'With You'} classNumber={"three"}/>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} title={'Avg Rate'} classNumber={"four"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rate'} classNumber={"four"}/>
           </div>
         </div>
         
