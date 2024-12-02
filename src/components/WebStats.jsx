@@ -12,20 +12,20 @@ export default function WebStats(props) {
                 <h5> Total Users </h5>
             </div>
             <div className='web-stats-div two'>
-                <i className="fa-solid fa-users"></i>
+                <i className="fa-solid fa-code-commit"></i>
                 <div> 5778 + </div>
                 <h5> Commits </h5>
             </div>
 
             <div className='web-stats-div three'>
-                <i className="fa-solid fa-users"></i>
+                <i className="fa-regular fa-calendar-days"></i>
                 <div> 20 + </div>
-                <h5> Demo Stats </h5>
+                <h5> With You </h5>
                 </div>
             <div className='web-stats-div four'>
                 <i className="fa-solid fa-users"></i>
-                <div> 12 + </div>
-                <h5> Demo Stats </h5>
+                <div> 4.7 <span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span> </div>
+                <h5> Avg Rate </h5>
             </div>
         </div>
     </div>
