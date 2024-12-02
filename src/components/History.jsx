@@ -14,9 +14,6 @@ export default function History() {
   let globalRemoveData = {
     
   }
-
-
-  const toggleRefresh = () => setRefresh((prev) => !prev);
   
   async function handleRemoveData(utcTime) {
     if (!utcTime || !globalUser.uid) {
@@ -85,14 +82,12 @@ export default function History() {
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
-            <button  className='coffee-delete-btn' onClick={() => {handleRemoveData(currentCoffeeStat[4])}}><i className="fa-solid fa-trash"></i> Remove </button>
+            <button  className='coffee-delete-btn' onClick={() => {
+              handleRemoveData(currentCoffeeStat[4])
+            }}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
-
-
-      <div> ________________ SMASH ______________</div>
-
-      <div className='coffee-history'>
+      {refresh && (<div className='coffee-history'>
         {Object.keys(globalData).sort((a,b) => b - a).map
         ((utcTime, coffeeIndex) => {
           const coffee = globalData[utcTime]
@@ -118,7 +113,7 @@ export default function History() {
                 </button>
             )
         })}
-      </div>
+      </div>)}
     </>
   )
 }
