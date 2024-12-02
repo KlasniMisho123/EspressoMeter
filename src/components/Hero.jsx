@@ -21,7 +21,6 @@ export default function Hero() {
               if you drink a cup of coffee with 200 mg if caffeine,
               5 hours, later, you'll still have about
                100 mg of caffeine in your system </p>
-         
        </div>
     </>
   )

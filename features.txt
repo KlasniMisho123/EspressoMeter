@@ -1,4 +1,4 @@
-*-- total users, total submits ?!.
+*-- WebStats -- total users, total submits Update After change?.
 *-- Loading Animations -- | app.jsx, authentication forms |
 *-- remove CofeeData -- Update After Remove.
 !-- setHour(0), setMin(0) reset after Add Entry. -- 

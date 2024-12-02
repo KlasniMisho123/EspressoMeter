@@ -9,12 +9,15 @@ export default function History() {
   const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-  
+  const [refresh, setRefresh] = useState(false);
+
   let globalRemoveData = {
     
   }
 
 
+  const toggleRefresh = () => setRefresh((prev) => !prev);
+  
   async function handleRemoveData(utcTime) {
     if (!utcTime || !globalUser.uid) {
       console.warn("Missing utcTime or user ID.");
@@ -73,6 +76,7 @@ export default function History() {
             )
         })}
       </div>
+
       {currentCoffeeStat? <div className='selected-coffee-section'>
         <div>
           <img style={{height: '100px', objectFit: "cover"}} src='../../src/assets/coffee-cup.png' />
@@ -84,6 +88,37 @@ export default function History() {
             <button  className='coffee-delete-btn' onClick={() => {handleRemoveData(currentCoffeeStat[4])}}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
+
+
+      <div> ________________ SMASH ______________</div>
+
+      <div className='coffee-history'>
+        {Object.keys(globalData).sort((a,b) => b - a).map
+        ((utcTime, coffeeIndex) => {
+          const coffee = globalData[utcTime]
+          const timeSinceConsume = timeSinceConsumption(utcTime)
+          const originalAmount = getCaffeineAmount(coffee.name)
+          const remainingAmount = calculateCurrentCaffeineLevel({
+            [utcTime]: coffee
+          })
+
+          const summary = `${coffee.name} | ${timeSinceConsume} |
+          ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
+
+            return (
+                <button key={coffeeIndex} title={summary} onClick={()=> {
+                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
+                  setCurrentCoffeeIndex(coffeeIndex)
+                  if(currentCoffeeIndex == coffeeIndex) {
+                    setCurrentCoffeeIndex(-1)
+                    setCurrentCoffeeStat("")
+                  }
+                  }}>
+                  <i className='fa-solid fa-mug-hot' />
+                </button>
+            )
+        })}
+      </div>
     </>
   )
 }
