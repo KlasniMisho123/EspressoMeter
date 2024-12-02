@@ -9,7 +9,6 @@ export default function History() {
   const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-  const [refresh, setRefresh] = useState(false);
 
   let globalRemoveData = {
     
@@ -87,33 +86,6 @@ export default function History() {
             }}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
-      {refresh && (<div className='coffee-history'>
-        {Object.keys(globalData).sort((a,b) => b - a).map
-        ((utcTime, coffeeIndex) => {
-          const coffee = globalData[utcTime]
-          const timeSinceConsume = timeSinceConsumption(utcTime)
-          const originalAmount = getCaffeineAmount(coffee.name)
-          const remainingAmount = calculateCurrentCaffeineLevel({
-            [utcTime]: coffee
-          })
-
-          const summary = `${coffee.name} | ${timeSinceConsume} |
-          ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
-
-            return (
-                <button key={coffeeIndex} title={summary} onClick={()=> {
-                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
-                  setCurrentCoffeeIndex(coffeeIndex)
-                  if(currentCoffeeIndex == coffeeIndex) {
-                    setCurrentCoffeeIndex(-1)
-                    setCurrentCoffeeStat("")
-                  }
-                  }}>
-                  <i className='fa-solid fa-mug-hot' />
-                </button>
-            )
-        })}
-      </div>)}
     </>
   )
 }

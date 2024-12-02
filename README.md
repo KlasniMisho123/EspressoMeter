@@ -72,8 +72,6 @@ Analytics for weekly, monthly, and yearly trends.
 Contributing 🤝
 We welcome contributions! Feel free to submit issues or pull requests.
 
-## License 📄
-This project is licensed under the MIT License.
 
 ## Contact 📧
 For questions or feedback, please reach out to your mikheili.silagava@gmail.com
