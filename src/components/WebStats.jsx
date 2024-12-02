@@ -5,7 +5,7 @@ export default function WebStats(props) {
     const {icon, stat, title, classNumber} = props
   return (
     <>
-        <div className={`web-stats-div one` + classNumber}>
+        <div className={`web-stats-div ` + classNumber}>
             {icon}
             <div> {stat} + </div>
             <h5> {title} </h5>

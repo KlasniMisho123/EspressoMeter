@@ -25,10 +25,10 @@ export default function Hero() {
        </div>
         <div className='web-stats-layout'>
           <div className='web-stats-grid'>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={170} title={'Total Users'}/>
-            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={5778 } title={'Commits'}/>
-            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={20} title={'With You'}/>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} title={'Avg Rate'}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={170} title={'Total Users'} classNumber={"one"}/>
+            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={5778 } title={'Commits'} classNumber={"two"}/>
+            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={20} title={'With You'} classNumber={"three"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} title={'Avg Rate'} classNumber={"four"}/>
           </div>
         </div>
         
