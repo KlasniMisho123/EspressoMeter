@@ -397,11 +397,69 @@ footer {
 }
 
 .coffee-delete-btn:hover {
-  background-color: #cd301f; /* Darker red background on hover */
-  color: #fff;               /* White text on hover */
-  border-color: #cd301f;     /* Darker red border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+  background-color: #cd301f; 
+  color: #fff;               
+  border-color: #cd301f;     
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
+
+.web-stats-layout {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0px;
+}
+
+.web-stats-grid {
+  display: grid;
+  grid-template-rows: repeat(2, 150px); 
+  grid-template-columns: repeat(2, 125px); 
+  gap: 2px;
+}
+
+.web-stats-grid > div {
+  padding: 20px 5px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.web-stats-div * {
+  flex-grow: 1;
+}
+
+.web-stats-div i {
+  font-size: 30px;
+}
+
+.web-stats-div div {
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
+}
+
+.web-stats-div.one {
+  background-color: rgba(106, 130, 251, 0.4);
+  color: rgb(106, 130, 251); 
+}
+
+.web-stats-div.two {
+  background-color: rgba(66, 230, 149, 0.5); 
+  color: rgb(66, 230, 149); 
+}
+
+.web-stats-div.three {
+  background-color: rgba(88, 207, 251, 0.5); 
+  color: rgb(88, 207, 251);  
+}
+
+.web-stats-div.four {
+  background-color: rgba(242, 84, 91, 0.4);
+  color: rgb(242, 84, 91);
+}
+
+
 
 @keyframes dashRight {
   0% {
