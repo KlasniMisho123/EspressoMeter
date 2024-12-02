@@ -1,5 +1,6 @@
 import React from 'react'
 import WebStats from './WebStats'
+import { db } from '../../firebase'
 
 export default function Hero() {
 
@@ -30,8 +31,8 @@ export default function Hero() {
           <div className='web-stats-grid'>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
-            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={20} title={'With You'} classNumber={"three"}/>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rate'} classNumber={"four"}/>
+            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${20} +`} title={'With You'} classNumber={"three"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
           </div>
         </div>
         
