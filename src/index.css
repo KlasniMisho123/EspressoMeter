@@ -413,7 +413,7 @@ footer {
   display: grid;
   grid-template-rows: repeat(2, 150px); 
   grid-template-columns: repeat(2, 125px); 
-  gap: 2px;
+  gap: 5px;
 }
 
 .web-stats-grid > div {
@@ -423,6 +423,11 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.web-stats-grid > div:hover {
+  transform: scale(1.2);
 }
 
 .web-stats-div * {
