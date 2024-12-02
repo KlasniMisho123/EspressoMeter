@@ -1,4 +1,5 @@
 import React from 'react'
+import WebStats from './WebStats'
 
 export default function Hero() {
   return (
@@ -22,6 +23,7 @@ export default function Hero() {
               5 hours, later, you'll still have about
                100 mg of caffeine in your system </p>
        </div>
+       <WebStats/>
     </>
   )
 }
