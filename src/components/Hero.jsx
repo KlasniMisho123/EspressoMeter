@@ -23,7 +23,16 @@ export default function Hero() {
               5 hours, later, you'll still have about
                100 mg of caffeine in your system </p>
        </div>
-       <WebStats/>
+        <div className='web-stats-layout'>
+          <div className='web-stats-grid'>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={170} title={'Total Users'}/>
+            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={5778 } title={'Commits'}/>
+            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={20} title={'With You'}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} title={'Avg Rate'}/>
+          </div>
+        </div>
+        
+       
     </>
   )
 }
