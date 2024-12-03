@@ -9,6 +9,19 @@ export default function Hero() {
   const [avgRateing, setAvgRateing ] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
+  function timeSince() {
+    const startDate = new Date("12/2/2024").getTime()
+    const currentDate = new Date("12/3/2024").getTime()
+    
+    let utcSince = currentDate - startDate
+    console.log("daysSince: ", utcSince)
+
+    let utcInDays = Math.round( utcSince / (1000 * 3600 * 24))
+    console.log("utcInDays: ", utcInDays)
+  }
+
+  
+
   async function countUsers() {
     setIsLoading(true);
     try {
@@ -25,6 +38,7 @@ export default function Hero() {
 
   useEffect(() => {
     countUsers();
+    timeSince();
   }, []); 
 
   const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
