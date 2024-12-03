@@ -496,6 +496,12 @@ footer {
   text-shadow: 0 3px 5px black; 
 }
 
+.rate-btn-hovered i {
+  color: yellow; 
+  text-shadow: 0 3px 5px black; 
+}
+
+
 
 @keyframes spin {
   0% {

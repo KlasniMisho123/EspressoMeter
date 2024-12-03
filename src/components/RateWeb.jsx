@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function RateWeb() {
+    const [hoveredStar, setHoveredStar] = useState(null);
+
+    const handleMouseEnter = (starIndex) => {
+        console.log("hoveredStar: ", hoveredStar)
+        setHoveredStar(starIndex);
+    }
+
+    const handleMouseLeave = () => {
+        setHoveredStar(null);
+    }
+
   return (
     <div className='rateing-input'>
-        <button className='rate-btn star-one'> <i className="fa-solid fa-star"></i> </button> 
-        <button className='rate-btn star-two'> <i className="fa-solid fa-star"></i> </button> 
-        <button className='rate-btn star-three'> <i className="fa-solid fa-star"></i> </button> 
-        <button className='rate-btn star-four'> <i className="fa-solid fa-star"></i> </button> 
-        <button className='rate-btn star-five'> <i className="fa-solid fa-star"></i> </button> 
+          {[1, 2, 3, 4, 5].map((starIndex) => (
+            <button 
+            className={`rate-btn rate-star-${starIndex}`}
+            key={starIndex}
+            onMouseEnter={() => handleMouseEnter(starIndex)}
+            onMouseLeave={handleMouseLeave}
+            >
+                <i className="fa-solid fa-star"></i> 
+            </button>
+          ))}
     </div>
   )
 }
+
+{/* <button className='rate-btn'>
+             <i className="fa-solid fa-star"></i> 
+        </button> 
+        <button className='rate-btn'>
+             <i className="fa-solid fa-star"></i> 
+        </button> 
+        <button className='rate-btn'>
+             <i className="fa-solid fa-star"></i> 
+        </button> 
+        <button className='rate-btn'>
+             <i className="fa-solid fa-star"></i> 
+        </button> 
+        <button className='rate-btn'>
+             <i className="fa-solid fa-star"></i> 
+        </button> */}
