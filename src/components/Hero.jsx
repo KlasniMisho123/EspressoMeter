@@ -22,7 +22,7 @@ export default function Hero() {
     let utcInDays = Math.round( utcSince / (1000 * 3600 * 24))
     if(utcInDays / 365 >= 1) {
       const years = Math.floor(utcInDays / 365)
-      return (`${(years)} Years`)
+      return (`${(years)} + Years`)
       } else {
         return (utcInDays + " Days")
       }
@@ -77,7 +77,7 @@ export default function Hero() {
           (<div className='web-stats-grid'>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
-            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} statTitle={"More Than"} title={'With You'} classNumber={"three"}/>
+            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} title={'With You'} classNumber={"three"}/>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
           </div>)}
         </div>
