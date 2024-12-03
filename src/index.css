@@ -476,6 +476,7 @@ footer {
 .rateing-input {
   display: flex;
   margin-top: 30px;
+  padding: 5px 0px;
   background-color: lightcoral;
 }
 
@@ -486,17 +487,12 @@ footer {
   cursor: pointer; 
 }
 
-.rate-btn i {
+.default-rate-star {
   color: black; 
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.rate-btn:hover i {
-  color: yellow; 
-  text-shadow: 0 3px 5px black; 
-}
-
-.rate-btn-hovered i {
+.hovered-rate-star {
   color: yellow; 
   text-shadow: 0 3px 5px black; 
 }

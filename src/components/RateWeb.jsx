@@ -4,7 +4,6 @@ export default function RateWeb() {
     const [hoveredStar, setHoveredStar] = useState(null);
 
     const handleMouseEnter = (starIndex) => {
-        console.log("hoveredStar: ", hoveredStar)
         setHoveredStar(starIndex);
     }
 
@@ -21,7 +20,7 @@ export default function RateWeb() {
             onMouseEnter={() => handleMouseEnter(starIndex)}
             onMouseLeave={handleMouseLeave}
             >
-                <i className="fa-solid fa-star"></i> 
+                <i className={"fa-solid fa-star " + (starIndex <= hoveredStar ? "hovered-rate-star" : "default-rate-star")}></i>
             </button>
           ))}
     </div>
