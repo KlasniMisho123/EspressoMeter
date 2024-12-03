@@ -3,6 +3,7 @@ import { calculateCurrentCaffeineLevel, coffeeConsumptionHistory, getCaffeineAmo
 import { useAuth } from '../context/AuthContext'
 import { doc, deleteField, updateDoc  } from 'firebase/firestore'
 import { db } from '../../firebase'
+import RateWeb from './RateWeb'
 
 export default function History() {
 
@@ -86,6 +87,7 @@ export default function History() {
             }}><i className="fa-solid fa-trash"></i> Remove </button>
         </div>
       </div> : "" }
+      <RateWeb />
     </>
   )
 }

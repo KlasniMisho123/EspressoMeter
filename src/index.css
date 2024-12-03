@@ -314,7 +314,6 @@ footer {
   display: flex;
   flex-direction: column;
   background-color: #F8EDED;
-  margin-left: 10px;
   padding: 10px;
   max-width: 250px;
   color: black;
@@ -473,6 +472,30 @@ footer {
 .loading-icon {
   animation: spin 2s linear infinite;
 }
+
+.rateing-input {
+  display: flex;
+  margin-top: 30px;
+  background-color: lightcoral;
+}
+
+.rate-btn {
+  background: none;
+  border: none; 
+  box-shadow: none;
+  cursor: pointer; 
+}
+
+.rate-btn i {
+  color: black; 
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.rate-btn:hover i {
+  color: yellow; 
+  text-shadow: 0 3px 5px black; 
+}
+
 
 @keyframes spin {
   0% {
