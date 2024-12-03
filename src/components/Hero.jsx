@@ -9,15 +9,23 @@ export default function Hero() {
   const [avgRateing, setAvgRateing ] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
+  let fromStart = timeSince()
+
   function timeSince() {
-    const startDate = new Date("12/2/2024").getTime()
+    const startDate = new Date("11/28/2020").getTime()
     const currentDate = new Date("12/3/2024").getTime()
     
     let utcSince = currentDate - startDate
-    console.log("daysSince: ", utcSince)
+
+    // 1000 Milliseconds --> Sec, 60 Sec --> Min, 60 Min --> Hour, 24 Hour --> Day 
 
     let utcInDays = Math.round( utcSince / (1000 * 3600 * 24))
-    console.log("utcInDays: ", utcInDays)
+    if(utcInDays / 365 >= 1) {
+      const years = Math.floor(utcInDays / 365)
+      return (`${(years)} Years`)
+      } else {
+        return (utcInDays + " Days")
+      }
   }
 
   
@@ -38,7 +46,6 @@ export default function Hero() {
 
   useEffect(() => {
     countUsers();
-    timeSince();
   }, []); 
 
   const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
@@ -70,7 +77,7 @@ export default function Hero() {
           (<div className='web-stats-grid'>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
-            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${20} +`} title={'With You'} classNumber={"three"}/>
+            <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} statTitle={"More Than"} title={'With You'} classNumber={"three"}/>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
           </div>)}
         </div>
