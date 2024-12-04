@@ -4,10 +4,7 @@ import React, { useState } from 'react'
 export default function RateWeb() {
     const [hoveredStar, setHoveredStar] = useState(null);
     const [rate, setRate] = useState(0)
-    const [rateAnimation, setRateAnimation] = useState(0)
     const [rateSuccess, setRateSuccess ] = useState("")
-
-     //rate can be used instead of rateanimation after set in firestore
 
     const handleMouseEnter = (starIndex) => {
         setHoveredStar(starIndex);
@@ -18,11 +15,17 @@ export default function RateWeb() {
     }
 
     const handleRate = ()  => {
+     try {
+          
+     } catch {
+
+     } finally {
           setRateSuccess("Your rate has been received")
           setTimeout(() => {
                setRateSuccess("");
-               setRateAnimation(0)
+               setRate(0)
            }, 5000);
+     }
     }
 
 
@@ -34,7 +37,6 @@ export default function RateWeb() {
             key={starIndex}
             onClick={()=> {
                handleRate()
-               setRateAnimation(starIndex)
                setRate(starIndex)
             }}
             onMouseEnter={() => handleMouseEnter(starIndex)}
@@ -44,7 +46,7 @@ export default function RateWeb() {
                (starIndex <= hoveredStar 
                     ? "hovered-rate-star " 
                     : "default-rate-star ") +
-               (rateAnimation && starIndex <= rateAnimation 
+               (rate && starIndex <= rate 
                     ? "hovered-rate-star" 
                     : "default-rate-star")
                }></i>
