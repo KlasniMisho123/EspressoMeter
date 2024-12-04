@@ -1,7 +1,10 @@
+import { startAfter } from 'firebase/firestore';
 import React, { useState } from 'react'
 
 export default function RateWeb() {
     const [hoveredStar, setHoveredStar] = useState(null);
+    const [rate, setRate] = useState(0)
+    const [rateSuccess, setRateSuccess ] = useState("")
 
     const handleMouseEnter = (starIndex) => {
         setHoveredStar(starIndex);
@@ -17,6 +20,10 @@ export default function RateWeb() {
             <button 
             className={`rate-btn rate-star-${starIndex}`}
             key={starIndex}
+            onClick={()=> {
+               setRate(starIndex)
+               console.log("Rate: ", starIndex)
+            }}
             onMouseEnter={() => handleMouseEnter(starIndex)}
             onMouseLeave={handleMouseLeave}
             >
@@ -26,19 +33,3 @@ export default function RateWeb() {
     </div>
   )
 }
-
-{/* <button className='rate-btn'>
-             <i className="fa-solid fa-star"></i> 
-        </button> 
-        <button className='rate-btn'>
-             <i className="fa-solid fa-star"></i> 
-        </button> 
-        <button className='rate-btn'>
-             <i className="fa-solid fa-star"></i> 
-        </button> 
-        <button className='rate-btn'>
-             <i className="fa-solid fa-star"></i> 
-        </button> 
-        <button className='rate-btn'>
-             <i className="fa-solid fa-star"></i> 
-        </button> */}
