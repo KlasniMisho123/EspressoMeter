@@ -16,6 +16,9 @@ export default function RateWeb() {
 
     const handleRate = ()  => {
           setRateSuccess("Your rate has been received")
+          setTimeout(() => {
+               setRateSuccess("");
+           }, 5000);
     }
 
 
@@ -28,7 +31,6 @@ export default function RateWeb() {
             onClick={()=> {
                handleRate()
                setRate(starIndex)
-               console.log("Rate: ", starIndex)
             }}
             onMouseEnter={() => handleMouseEnter(starIndex)}
             onMouseLeave={handleMouseLeave}
@@ -36,7 +38,7 @@ export default function RateWeb() {
                 <i className={"fa-solid fa-star " + (starIndex <= hoveredStar ? "hovered-rate-star" : "default-rate-star")}></i>
             </button>
           ))}
-          {rateSuccess ? (<div className='rate-message'> <i class="fa-solid fa-circle-check" style={{ color: "#228B22" }}></i> <span style={{ color: "#FFFFFF" }}> {rateSuccess}! </span></div>) : ""}
+          {rateSuccess ? (<div className='rate-message'> <i className="fa-solid fa-circle-check" style={{ color: "#228B22" }}></i> <span style={{ color: "#FFFFFF" }}> {rateSuccess}! </span></div>) : ""}
     </div>
   )
 }

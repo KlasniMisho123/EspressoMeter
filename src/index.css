@@ -502,6 +502,23 @@ footer {
   display: flex;
   align-items: center;
   gap: 5px;
+  opacity: 0;
+  animation: appear 5s forwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0; 
+  }
+  25% {
+   opacity: 1; 
+  }
+  75% {
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes spin {
