@@ -497,7 +497,12 @@ footer {
   text-shadow: 0 3px 5px black; 
 }
 
-
+.rate-message {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
 @keyframes spin {
   0% {

@@ -14,6 +14,11 @@ export default function RateWeb() {
         setHoveredStar(null);
     }
 
+    const handleRate = ()  => {
+          setRateSuccess("Your rate has been received")
+    }
+
+
   return (
     <div className='rateing-input'>
           {[1, 2, 3, 4, 5].map((starIndex) => (
@@ -21,6 +26,7 @@ export default function RateWeb() {
             className={`rate-btn rate-star-${starIndex}`}
             key={starIndex}
             onClick={()=> {
+               handleRate()
                setRate(starIndex)
                console.log("Rate: ", starIndex)
             }}
@@ -30,6 +36,7 @@ export default function RateWeb() {
                 <i className={"fa-solid fa-star " + (starIndex <= hoveredStar ? "hovered-rate-star" : "default-rate-star")}></i>
             </button>
           ))}
+          {rateSuccess ? (<div className='rate-message'> <i class="fa-solid fa-circle-check" style={{ color: "#228B22" }}></i> <span style={{ color: "#FFFFFF" }}> {rateSuccess}! </span></div>) : ""}
     </div>
   )
 }
