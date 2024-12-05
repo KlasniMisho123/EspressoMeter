@@ -30,22 +30,30 @@ export default function Hero() {
 
   
 
-  async function countUsers() {
+  async function countWebStats() {
     setIsLoading(true);
     try {
       const querySnapshot = await getDocs(collection(db, "users"));
+      // count totalUsers, setTotalUsers
       const userCount = querySnapshot.size;
-      // totalUsers - 0, missing Error:  Missing or insufficient permissions
       setTotalUsers(userCount)
+
+      // count totalCommits, setTotalCommits
+      console.log("querySnapshot: ", querySnapshot)
+      const userCommitCount = querySnapshot
+      console.log("userCommitCount: ", userCommitCount)
+      setTotalCommits(0)
+
     } catch (err) {
-      console.log("Error: ", err.message);
+      console.log("Couldnt get TotalUsers Error: ", err.message);
     } finally {
       setIsLoading(false);
     }
   }
 
+
   useEffect(() => {
-    countUsers();
+    countWebStats();
   }, []); 
 
   const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
@@ -76,7 +84,7 @@ export default function Hero() {
           {isLoading? (<div className='loading-div'><i className="fa-solid fa-gear loading-icon" style={{fontSize: "40px"}}></i> Loading</div>):
           (<div className='web-stats-grid'>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${totalUsers}`} title={'Total Users'} classNumber={"one"}/>
-            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
+            <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${totalCommits}`} title={'Commits'} classNumber={"two"}/>
             <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} title={'With You'} classNumber={"three"}/>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
           </div>)}
