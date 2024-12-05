@@ -47,9 +47,9 @@ export default function Hero() {
         const userData = userDoc.data();
         // calculate commits for each user.
         const commitCount = Object.keys(userData).length;
-        totalCommits += commitCount;
-        
-        setTotalCommits(totalCommits)
+
+        //set totalCommits
+        setTotalCommits(totalCommits += commitCount)
       })
       console.log("userCommitCount: ", userCommitCount)
       setTotalCommits(0)
