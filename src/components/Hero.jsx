@@ -33,14 +33,24 @@ export default function Hero() {
   async function countWebStats() {
     setIsLoading(true);
     try {
+      
       const querySnapshot = await getDocs(collection(db, "users"));
       // count totalUsers, setTotalUsers
       const userCount = querySnapshot.size;
       setTotalUsers(userCount)
-
+      
       // count totalCommits, setTotalCommits
-      console.log("querySnapshot: ", querySnapshot)
-      const userCommitCount = querySnapshot
+      let totalCommits = 0;
+
+      querySnapshot.docs.forEach((userDoc) => { 
+        // construct data
+        const userData = userDoc.data();
+        // calculate commits for each user.
+        const commitCount = Object.keys(userData).length;
+        totalCommits += commitCount;
+        
+        setTotalCommits(totalCommits)
+      })
       console.log("userCommitCount: ", userCommitCount)
       setTotalCommits(0)
 
