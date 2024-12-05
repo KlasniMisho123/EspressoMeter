@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function WebStats(props) {
-    const {icon, stat, title, statTitle, classNumber, statDecoration} = props
+    const {icon, stat, title, classNumber, statDecoration} = props
     
   return (
     <>

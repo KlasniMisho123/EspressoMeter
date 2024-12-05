@@ -38,7 +38,7 @@ export default function Hero() {
       // totalUsers - 0, missing Error:  Missing or insufficient permissions
       setTotalUsers(userCount)
     } catch (err) {
-      // console.log("Error: ", err.message);
+      console.log("Error: ", err.message);
     } finally {
       setIsLoading(false);
     }
@@ -75,7 +75,7 @@ export default function Hero() {
         <div className='web-stats-layout'>
           {isLoading? (<div className='loading-div'><i className="fa-solid fa-gear loading-icon" style={{fontSize: "40px"}}></i> Loading</div>):
           (<div className='web-stats-grid'>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${170} +`} title={'Total Users'} classNumber={"one"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${totalUsers}`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${5778} +`} title={'Commits'} classNumber={"two"}/>
             <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} title={'With You'} classNumber={"three"}/>
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
