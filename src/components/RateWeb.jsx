@@ -1,9 +1,11 @@
-import { startAfter } from 'firebase/firestore';
 import React, { useState } from 'react'
+import { collection, setDoc, getDocs } from 'firebase/firestore';
+import { db } from "../../firebase";
 
 export default function RateWeb() {
     const [hoveredStar, setHoveredStar] = useState(null);
     const [rate, setRate] = useState(0)
+    const [tempoRate, setTempoRate] = useState(0)
     const [rateSuccess, setRateSuccess ] = useState("")
 
     const handleMouseEnter = (starIndex) => {
@@ -16,16 +18,19 @@ export default function RateWeb() {
 
     const handleRate = ()  => {
      try {
-          
-     } catch {
-
-     } finally {
-          setRateSuccess("Your rate has been received")
-          setTimeout(() => {
-               setRateSuccess("");
-               setRate(0)
-           }, 5000);
-     }
+      const userRate = {
+        rate: rate
+      }
+        setRateSuccess("Your rate has been received")     
+        console.log(userRate)
+      } catch(err) {
+        console.log("Set Rate Err: ", err.message)
+      } finally {
+        setTimeout(() => {
+          setRateSuccess("");
+          setTempoRate(0)
+        }, 5000);
+      }
     }
 
 
@@ -38,6 +43,7 @@ export default function RateWeb() {
             onClick={()=> {
                handleRate()
                setRate(starIndex)
+               setTempoRate(starIndex)
             }}
             onMouseEnter={() => handleMouseEnter(starIndex)}
             onMouseLeave={handleMouseLeave}
@@ -46,7 +52,7 @@ export default function RateWeb() {
                (starIndex <= hoveredStar 
                     ? "hovered-rate-star " 
                     : "default-rate-star ") +
-               (rate && starIndex <= rate 
+               (tempoRate && starIndex <= tempoRate 
                     ? "hovered-rate-star" 
                     : "default-rate-star")
                }></i>
