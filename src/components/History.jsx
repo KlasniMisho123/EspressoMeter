@@ -71,6 +71,7 @@ export default function History() {
                   <i className='fa-solid fa-mug-hot' />
                 </button>
             )
+          
         })}
       </div>
 

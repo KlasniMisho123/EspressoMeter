@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
-import { collection, setDoc, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
+import { doc, collection, setDoc, getDocs, addDoc } from 'firebase/firestore';
 import { db } from "../../firebase";
+import { useAuth } from '../context/AuthContext';
 
 export default function RateWeb() {
-    const [hoveredStar, setHoveredStar] = useState(null);
-    const [rate, setRate] = useState(0)
-    const [tempoRate, setTempoRate] = useState(0)
-    const [rateSuccess, setRateSuccess ] = useState("")
-    // const [previousRate, setPreviousRate ] = useState(-1)
-    
+  
+  const [hoveredStar, setHoveredStar] = useState(null);
+  const [rate, setRate] = useState(-1)
+  const [tempoRate, setTempoRate] = useState(0)
+  const [rateSuccess, setRateSuccess ] = useState("")
+
+  const { globalUser } = useAuth()
+  
     const handleMouseEnter = (starIndex) => {
         setHoveredStar(starIndex);
     }
@@ -17,14 +20,16 @@ export default function RateWeb() {
         setHoveredStar(null);
     }
 
-    const handleRate = ()  => {
-      // if(previousRate == rate) { return }
-      // else { }
-      // setPreviousRate(rate)
-      let userRateData = ""
+    const handleRate = async()  => {
       try {
         const userRate =  rate 
-        userRateData = userRate
+
+        const userRef = doc(db, "users", globalUser.uid)
+        
+        const userRatingRef = doc(userRef, "userRating", "rateDoc");
+
+        await setDoc(userRatingRef, { rate: userRate }, { merge: true });
+
         setRateSuccess("Your rate has been received")     
       } catch(err) {
         console.log("Set Rate Err: ", err.message)
@@ -37,6 +42,11 @@ export default function RateWeb() {
       }
     }
 
+    useEffect(() => {
+      if (rate !== -1) {
+        handleRate();
+      }
+    }, [rate]);
 
   return (
     <div className='rateing-input'>
@@ -45,9 +55,9 @@ export default function RateWeb() {
             className={`rate-btn rate-star-${starIndex}`}
             key={starIndex}
             onClick={()=> {
-               handleRate()
-               setRate(starIndex)
-               setTempoRate(starIndex)
+              setRate(starIndex)
+              setTempoRate(starIndex)
+              // handleRate();
             }}
             onMouseEnter={() => handleMouseEnter(starIndex)}
             onMouseLeave={handleMouseLeave}
@@ -63,7 +73,6 @@ export default function RateWeb() {
             </button>
           ))}
           {rateSuccess ? (<div className='rate-message'> <i className="fa-solid fa-circle-check" style={{ color: "#228B22" }}></i> <span style={{ color: "#FFFFFF" }}> {rateSuccess}! </span></div>) : ""}
-          {rate}
     </div>
   )
 }

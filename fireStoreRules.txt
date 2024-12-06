@@ -1,8 +1,10 @@
 -- FireStore Rules Err --
 
----- ✔ ----
+---- x ----
 
 rules_version = '2';
+
+// not receiving Rate
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -23,31 +25,26 @@ service cloud.firestore {
 }
 
 ---- x ----
-
-// allows logged in users to commit, but cant retrieve webStats
-
+// not receiving webStats
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /users/{userId}/userRating/{ratingId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+    }
+
     match /{document=**} {
-        allow read, write: if false;
-    }
-    match /users/{userId} {
-      	allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-  }
-}
-
----- x ----
-
-// allows retrieve webStats to commit, but logged users cant commit
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read: if true; // Allow read for all users
+      allow read, write: if false;
     }
   }
 }
