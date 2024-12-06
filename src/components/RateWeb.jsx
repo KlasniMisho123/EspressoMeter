@@ -7,7 +7,8 @@ export default function RateWeb() {
     const [rate, setRate] = useState(0)
     const [tempoRate, setTempoRate] = useState(0)
     const [rateSuccess, setRateSuccess ] = useState("")
-
+    // const [previousRate, setPreviousRate ] = useState(-1)
+    
     const handleMouseEnter = (starIndex) => {
         setHoveredStar(starIndex);
     }
@@ -17,12 +18,14 @@ export default function RateWeb() {
     }
 
     const handleRate = ()  => {
-     try {
-      const userRate = {
-        rate: rate
-      }
+      // if(previousRate == rate) { return }
+      // else { }
+      // setPreviousRate(rate)
+      let userRateData = ""
+      try {
+        const userRate =  rate 
+        userRateData = userRate
         setRateSuccess("Your rate has been received")     
-        console.log(userRate)
       } catch(err) {
         console.log("Set Rate Err: ", err.message)
       } finally {
@@ -30,6 +33,7 @@ export default function RateWeb() {
           setRateSuccess("");
           setTempoRate(0)
         }, 5000);
+        
       }
     }
 
@@ -59,6 +63,7 @@ export default function RateWeb() {
             </button>
           ))}
           {rateSuccess ? (<div className='rate-message'> <i className="fa-solid fa-circle-check" style={{ color: "#228B22" }}></i> <span style={{ color: "#FFFFFF" }}> {rateSuccess}! </span></div>) : ""}
+          {rate}
     </div>
   )
 }
