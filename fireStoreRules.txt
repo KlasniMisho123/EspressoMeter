@@ -1,0 +1,53 @@
+-- FireStore Rules Err --
+
+---- ✔ ----
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Allow authenticated users to read and write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow read access to the `users` collection for metadata purposes
+    match /users/{userId} {
+      allow read: if true;
+    }
+  }
+}
+
+---- x ----
+
+// allows logged in users to commit, but cant retrieve webStats
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+        allow read, write: if false;
+    }
+    match /users/{userId} {
+      	allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+
+---- x ----
+
+// allows retrieve webStats to commit, but logged users cant commit
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if true; // Allow read for all users
+    }
+  }
+}

@@ -12,8 +12,8 @@ export default function Hero() {
   let fromStart = timeSince()
 
   function timeSince() {
-    const startDate = new Date("11/28/2020").getTime()
-    const currentDate = new Date("12/3/2024").getTime()
+    const startDate = new Date("11/28/2024").getTime()
+    const currentDate = new Date().getTime()
     
     let utcSince = currentDate - startDate
 
@@ -47,13 +47,11 @@ export default function Hero() {
         const userData = userDoc.data();
         // calculate commits for each user.
         const commitCount = Object.keys(userData).length;
-
-        //set totalCommits
         setTotalCommits(totalCommits += commitCount)
       })
-      console.log("userCommitCount: ", userCommitCount)
+      // Console.log err doesnot works without console.log??
+      console.log("userCommitCount: ", userCommitCount) 
       setTotalCommits(0)
-
     } catch (err) {
       console.log("Couldnt get TotalUsers Error: ", err.message);
     } finally {
