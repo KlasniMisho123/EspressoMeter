@@ -3,4 +3,4 @@
 !-- remove CofeeData -- Update After Remove, removed Succesfully Display.
 !-- setHour(0), setMin(0) reset after Add Entry. -- 
 !-- totalUsers - 0, missing Error:  Missing or insufficient permissions -- Hero.jsx
--- Rateing,
+-- Rateing, avrgRate -- rules Err -- BAGON

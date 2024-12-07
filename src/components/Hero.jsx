@@ -56,7 +56,7 @@ export default function Hero() {
 
       setTotalCommits(0)
     } catch (err) {
-      console.log("Couldnt get TotalUsers Error: ", err.message);
+      // console.log("Couldnt get TotalUsers Error: ", err.message);
     } finally {
       setIsLoading(false);
     }
@@ -66,9 +66,17 @@ export default function Hero() {
     try {
       const querySnapshot = await getDocs(collection(db, "users"));
 
-      console.log("querySnapshot: ", querySnapshot)
+      querySnapshot.docs.forEach(async (user, indexUser)=>{
+        const userId = user.id
+
+        // const queryUserRateing = await getDocs(collection(db, "users", userId, "userRating"));
+
+        // let userRateingData = queryUserRateing.docs
+
+        // console.log(`userId-${indexUser}: `, userRateingData)
+      })
     } catch(err) {
-      console.log("avrgRate Error: ",err.message)
+      console.log("Average Rateing Error: ", err.message)
     } finally {
 
     }   
