@@ -35,11 +35,11 @@ export default function Hero() {
     try {
       
       const querySnapshot = await getDocs(collection(db, "users"));
-      // count totalUsers, setTotalUsers
+      // **count totalUsers, setTotalUsers
       const userCount = querySnapshot.size;
       setTotalUsers(userCount)
       
-      // count totalCommits, setTotalCommits
+      // **count totalCommits, setTotalCommits
       let totalCommits = 0;
 
       querySnapshot.docs.forEach((userDoc) => { 
@@ -47,10 +47,13 @@ export default function Hero() {
         const userData = userDoc.data();
         // calculate commits for each user.
         const commitCount = Object.keys(userData).length;
-        setTotalCommits(totalCommits += commitCount)
+        totalCommits += commitCount
+        setTotalCommits(totalCommits)
       })
-      // Console.log err doesnot works without console.log??
-      console.log("userCommitCount: ", userCommitCount) 
+      // console.log err doesnot works without console.log??
+      // console.log("userCommitCount: ", userCommitCount) 
+      userCommitCount 
+
       setTotalCommits(0)
     } catch (err) {
       console.log("Couldnt get TotalUsers Error: ", err.message);
@@ -59,12 +62,27 @@ export default function Hero() {
     }
   }
 
+  async function avrgRate(params) {
+    try {
+      const querySnapshot = await getDocs(collection(db, "users"));
+
+      console.log("querySnapshot: ", querySnapshot)
+    } catch(err) {
+      console.log("avrgRate Error: ",err.message)
+    } finally {
+
+    }   
+  }
+
 
   useEffect(() => {
     countWebStats();
+    avrgRate()
   }, []); 
 
-  const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>) 
+  
+
+  const avgRateDec = (<span><i className="fa-solid fa-star" style={{color:"yellow", fontSize: "18px"}}></i></span>)
 
   return (
     <>

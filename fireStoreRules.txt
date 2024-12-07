@@ -1,10 +1,10 @@
 -- FireStore Rules Err --
 
----- x ----
-
-rules_version = '2';
 
 // not receiving Rate
+
+---- x ----
+rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -24,8 +24,9 @@ service cloud.firestore {
   }
 }
 
----- x ----
 // not receiving webStats
+
+---- x ----
 rules_version = '2';
 
 service cloud.firestore {
