@@ -79,13 +79,15 @@ export default function Hero() {
         if(userRatingData.length != 0) {
           numberOfRates += 1
           userRatingData.forEach(userWRate => {
-            let userRates = userWRate.data().rate
-            sumOfRates += userRates
+            sumOfRates += userWRate.data().rate
+            sumOfRates
           });
+        } else {
+          return
         }
+        const rateAverage = parseFloat(sumOfRates / numberOfRates).toFixed(1)
+        setAvgRateing(rateAverage)
       })
-      const rateAverage = sumOfRates / numberOfRates
-      console.log("rateAverage: ", rateAverage)
     } catch(err) {
       console.log("Average Rateing Error: ", err.message)
     } finally {
@@ -131,7 +133,7 @@ export default function Hero() {
             <WebStats icon={<i className="fa-solid fa-users"></i>} stat={`${totalUsers}`} title={'Total Users'} classNumber={"one"}/>
             <WebStats icon={<i className="fa-solid fa-code-commit"></i>} stat={`${totalCommits}`} title={'Commits'} classNumber={"two"}/>
             <WebStats icon={<i className="fa-regular fa-calendar-days"></i>} stat={`${fromStart} `} title={'With You'} classNumber={"three"}/>
-            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={4.7} statDecoration={avgRateDec} title={'Avg Rating'} classNumber={"four"}/>
+            <WebStats icon={<i className="fa-solid fa-users"></i>} stat={avgRateing} statDecoration={avgRateDec} title={'Average Rating'} classNumber={"four"}/>
           </div>)}
         </div>
         
