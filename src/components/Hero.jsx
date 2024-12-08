@@ -62,30 +62,41 @@ export default function Hero() {
     }
   }
 
-  async function avrgRate(params) {
+  let numberOfRates = 0
+  let sumOfRates = 0
+  async function avrgRate() {
     try {
       const querySnapshot = await getDocs(collection(db, "users"));
-
+      
+      
       querySnapshot.docs.forEach(async (user, indexUser)=>{
         const userId = user.id
+        
+        const queryUserRating = await getDocs(collection(db, "users", userId, "userRating"));
 
-        // const queryUserRateing = await getDocs(collection(db, "users", userId, "userRating"));
+        let userRatingData = queryUserRating.docs
 
-        // let userRateingData = queryUserRateing.docs
-
-        // console.log(`userId-${indexUser}: `, userRateingData)
+        if(userRatingData.length != 0) {
+          numberOfRates += 1
+          userRatingData.forEach(userWRate => {
+            let userRates = userWRate.data().rate
+            sumOfRates += userRates
+          });
+        }
       })
+      const rateAverage = sumOfRates / numberOfRates
+      console.log("rateAverage: ", rateAverage)
     } catch(err) {
       console.log("Average Rateing Error: ", err.message)
     } finally {
-
+      
     }   
   }
-
+  
+  avrgRate();
 
   useEffect(() => {
     countWebStats();
-    avrgRate()
   }, []); 
 
   
