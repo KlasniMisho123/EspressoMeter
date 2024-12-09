@@ -53,6 +53,7 @@ export default function CoffeeForm(props) {
             }, {merge: true})
 
             setSelectedCoffee(null)
+            // doesnot reset Mins and hours
             setHour(0)
             setMin(0)
             setCoffeeCost(0)
@@ -136,13 +137,14 @@ export default function CoffeeForm(props) {
             </div>
             <div>
                 <h6>Minutes</h6>
-                <select id='mins-select' onChange={(e) =>{
+                <select id='mins-select' onChange={(e) => {
                     setMin(e.target.value)
                 }} >
                     {[0, 5, 10, 15, 30, 45].map((mins, minsIndex) => {
                         return (
-                            <option key={minsIndex} value={mins}>
-                                {mins}
+                            <option key={minsIndex}
+                             value={mins}>
+                            {mins}
                             </option>
                         )
                     })}

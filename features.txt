@@ -1,6 +1,7 @@
-*-- WebStats --  total submits, Date, Update After change?.
+*-- WebStats --  Update After change?.
+*-- remove CofeeData -- Update After Remove.
 *-- Loading Animations -- | app.jsx, authentication forms |
-!-- remove CofeeData -- Update After Remove, removed Succesfully Display.
+
 !-- setHour(0), setMin(0) reset after Add Entry. -- 
 !-- totalUsers - 0, missing Error:  Missing or insufficient permissions -- Hero.jsx
--- Rateing, avrgRate -- rules Err -- BAGON
+!-- userCommitCount is not defined - countWebStats()
