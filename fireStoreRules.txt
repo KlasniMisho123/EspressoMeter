@@ -1,44 +1,12 @@
--- FireStore Rules Err --
-
-
-// not receiving Rate
-
----- x ----
+--- ✔ ---
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
-      allow read, write: if true; // Permissive rule, replace with proper conditions
+      allow read, write: if true; 
     }
     match /users/{userId}/userRating/{ratingId} {
-      allow read: if true; // Allow reading user ratings
-    }
-  }
-}
-
-// not receiving webStats
-
----- x ----
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /users/{userId}/userRating/{ratingId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /users/{userId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /{document=**} {
-      allow read, write: if false;
+      allow read, write: if true; 
     }
   }
 }
