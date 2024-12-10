@@ -18,7 +18,7 @@ export default function History() {
     
   }
   
-  async function handleRemoveData(utcTime) {
+  async function handleRemoveData(utcTime, coffeeIndex) {
     if (!utcTime || !globalUser.uid) {
       console.warn("Missing utcTime or user ID.");
       return;
@@ -31,13 +31,12 @@ export default function History() {
 
     try {
         const docRef = doc(db, "users", globalUser.uid)
-        // await updateDoc(docRef, {
-        //   [utcTime]: deleteField()
-        // });
-        // setCurrentCoffeeStat(0)
-        // setCurrentCoffeeIndex(-1)
+        await updateDoc(docRef, {
+          [utcTime]: deleteField()
+        });
+        setCurrentCoffeeStat(0)
+        setCurrentCoffeeIndex(-1)
         setRemovedIndexes((prev) => [...prev, coffeeIndex]);
-        console.log("removedIndexes: ", removedIndexes)
     } catch(err) {
       console.error("Error removing data:", err.message);
     }
@@ -65,13 +64,13 @@ export default function History() {
           ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
 
             return (
-                <button key={coffeeIndex} title={summary} style={removedIndexes.includes(coffeeIndex)  ? { display: "none" } : {}} onClick={()=> {
-                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
+                <button key={coffeeIndex} title={summary} style={removedIndexes.includes(coffeeIndex)  ? { display: "none" } : {}} 
+                onClick={()=> {
+                  setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime, coffeeIndex])
                   setCurrentCoffeeIndex(coffeeIndex)
                   if(currentCoffeeIndex == coffeeIndex) {
                     setCurrentCoffeeIndex(-1)
                     setCurrentCoffeeStat("")
-                    
                   }
                   }}>
                   <i className='fa-solid fa-mug-hot' />
@@ -88,9 +87,13 @@ export default function History() {
             <h3 style={{ textAlign: "center" }}>{currentCoffeeStat[0]}</h3>
             <p><span>Consumed:</span> {currentCoffeeStat[1]} Ago </p>
             <p><span>Current Caffeine:</span> {currentCoffeeStat[2]}mg /{currentCoffeeStat[3]}mg</p>
-            <button  className='coffee-delete-btn' onClick={() => {
-              handleRemoveData(currentCoffeeStat[4])
-            }}><i className="fa-solid fa-trash"></i> Remove </button>
+            <button
+              className='coffee-delete-btn'
+              onClick={() => {
+                handleRemoveData(currentCoffeeStat[4], currentCoffeeStat[5])
+              }}>
+              <i className="fa-solid fa-trash"></i> Remove
+            </button>
         </div>
       </div> : "" }
       <RateWeb />
