@@ -10,18 +10,9 @@ export default function History() {
   const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-  const [visibleButtons, setVisibleButtons] = useState(new Set());
+  const [removedIndexes, seRemovedIndexes] = useState([]);
 
-  const [invButton, setInvButton] = useState([
-    { coffeeIndex: 0, isVisible: true },
-    { coffeeIndex: 1, isVisible: true },
-  ])
   
-  useEffect(() => {
-    if (globalData) {
-      setVisibleButtons(new Set(Object.keys(globalData)));
-    }
-  }, [globalData]);
 
   let globalRemoveData = {
     
@@ -40,7 +31,6 @@ export default function History() {
 
     try {
         const docRef = doc(db, "users", globalUser.uid)
-        
         // await updateDoc(docRef, {
         //   [utcTime]: deleteField()
         // });
@@ -73,7 +63,7 @@ export default function History() {
           const summary = `${coffee.name} | ${timeSinceConsume} |
           ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
 
-            isVisible?  (
+            return (isVisible? (
                 <button key={coffeeIndex} title={summary} onClick={()=> {
                   setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
                   setCurrentCoffeeIndex(coffeeIndex)
@@ -85,7 +75,7 @@ export default function History() {
                   }}>
                   <i className='fa-solid fa-mug-hot' />
                 </button>
-            ) : null
+            ) : null)
         })}
       </div>
 
