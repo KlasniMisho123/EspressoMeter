@@ -10,7 +10,7 @@ export default function History() {
   const { globalData, globalUser } = useAuth()
   const [currentCoffeeStat, setCurrentCoffeeStat ] = useState("")
   const [currentCoffeeIndex, setCurrentCoffeeIndex ] = useState(-1)
-  const [removedIndexes, seRemovedIndexes] = useState([]);
+  const [removedIndexes, setRemovedIndexes] = useState([]);
 
   
 
@@ -36,7 +36,8 @@ export default function History() {
         // });
         // setCurrentCoffeeStat(0)
         // setCurrentCoffeeIndex(-1)
-        console.log("currentIndex: ", currentCoffeeIndex)
+        setRemovedIndexes((prev) => [...prev, coffeeIndex]);
+        console.log("removedIndexes: ", removedIndexes)
     } catch(err) {
       console.error("Error removing data:", err.message);
     }
@@ -63,8 +64,8 @@ export default function History() {
           const summary = `${coffee.name} | ${timeSinceConsume} |
           ${coffee.cost}$ | ${remainingAmount}mg / ${originalAmount}mg`
 
-            return (isVisible? (
-                <button key={coffeeIndex} title={summary} onClick={()=> {
+            return (
+                <button key={coffeeIndex} title={summary} style={removedIndexes.includes(coffeeIndex)  ? { display: "none" } : {}} onClick={()=> {
                   setCurrentCoffeeStat([coffee.name, timeSinceConsume, remainingAmount, originalAmount, utcTime])
                   setCurrentCoffeeIndex(coffeeIndex)
                   if(currentCoffeeIndex == coffeeIndex) {
@@ -75,7 +76,7 @@ export default function History() {
                   }}>
                   <i className='fa-solid fa-mug-hot' />
                 </button>
-            ) : null)
+            )
         })}
       </div>
 
