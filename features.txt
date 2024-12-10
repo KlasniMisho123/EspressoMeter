@@ -1,7 +1,5 @@
 *-- WebStats --  Update After change?.
-*-- remove CofeeData -- Update After Remove.
 *-- Loading Animations -- | app.jsx, authentication forms |
 
 !-- setHour(0), setMin(0) reset after Add Entry. -- 
-!-- totalUsers - 0, missing Error:  Missing or insufficient permissions -- Hero.jsx
 !-- userCommitCount is not defined - countWebStats()
