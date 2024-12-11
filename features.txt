@@ -1,5 +1,4 @@
 *-- WebStats --  Update After change?.
-*-- Loading Animations -- | app.jsx, authentication forms |
 
 !-- setHour(0), setMin(0) reset after Add Entry. -- 
 !-- userCommitCount is not defined - countWebStats()

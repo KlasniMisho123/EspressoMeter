@@ -54,7 +54,7 @@ export default function Authentication(props) {
     )}
     <input value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Email'/>
     <input value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder='********' type='password' />
-    <button onClick={handleAuthenticate}><p>{isAuthenticating ? 'Authenticating...' : 'Submit'}</p></button>
+    <button onClick={handleAuthenticate}><p>{isAuthenticating ? (<p> <i className="fa-brands fa-slack loading-icon" style={{fontSize: "20px"}}></i> Authenticating </p>) : 'Submit'}</p></button>
     <hr/>
     <div className='regster-content'>
       <p>{isRegistration ? "Already have account?" : "Don't have an account?"}</p>
