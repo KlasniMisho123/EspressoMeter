@@ -49,7 +49,7 @@ export default function History() {
         <i className='fa-solid fa-timeline'/>
         <h2>History</h2>
       </div>
-      <p><i> Hover for more information! </i></p>
+      <p><i> Hover or Click for more information! </i></p>
       <div className='coffee-history'>
         {Object.keys(globalData).sort((a,b) => b - a).map
         ((utcTime, coffeeIndex) => {
